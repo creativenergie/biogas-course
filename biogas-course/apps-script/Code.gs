@@ -176,6 +176,7 @@ https://creativenergie.co.uk`;
   GmailApp.sendEmail(email, EMAIL_SUBJECT, body, {
     htmlBody: htmlBody,
     name: FROM_NAME,
+    from: 'info@creativenergie.co.uk',
   });
 }
 
