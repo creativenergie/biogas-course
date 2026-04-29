@@ -15,7 +15,7 @@ By the end of this session, you will be able to:
 *Sanile shares her experience as a biogas technician and course participant.*
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin-bottom:1rem;">
-  <iframe src="https://www.youtube.com/embed/YOUR_TESTIMONY_VIDEO_ID"
+  <iframe src="https://www.youtube.com/embed/UArLKPYpiPU"
     style="position:absolute;top:0;left:0;width:100%;height:100%;"
     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen></iframe>
@@ -131,6 +131,124 @@ The broader effects:
 
 ---
 
+## Building a Biogas Business
+
+Biogas offers multiple services to people: clean, modern and free energy, effective waste management, and quality organic fertiliser. To bring these benefits to more people, we cannot rely on charitable giving alone. Business is the most effective means to expand the benefits of biogas in a financially sustainable way.
+
+To start a successful biogas business you need three things:
+
+1. **A product or service** — a valuable offering that meets customer needs.
+2. **A market** — a group of people willing to pay for it.
+3. **A revenue model** — a sustainable way to generate income and keep the business running.
+
+The business can only work if there are enough paying customers to provide income. Keep the customer at the forefront of your mind and build your business around their unmet needs.
+
+---
+
+### Types of Biogas Business
+
+There are three main models:
+
+| Model | Description |
+|---|---|
+| **Product-based** | Construct and install biogas systems for households, schools, or institutions. May also include service and maintenance contracts. |
+| **Gas service-based** | Build a large plant and supply biogas to nearby customers — works well with consistent waste supply (zero-grazed animals, community toilets). |
+| **Productive-use based** | Use biogas to produce another product or service — roasting coffee, cooking food, running a small manufacturing process. |
+
+---
+
+### Before You Start
+
+| Consideration | Questions to ask |
+|---|---|
+| Knowledge and expertise | Do you have the technical skills to build and maintain systems? |
+| Market demand | Who are your potential customers? What are their needs? |
+| Regulatory requirements | Are there local safety or legal regulations that apply? |
+| Financial planning | How will you fund the business and ensure profitability? |
+
+---
+
+### Finding a Founding Team
+
+Starting a business is easier and more successful with a team. A strong founding team should cover:
+
+- **Technical skills** — biogas construction and maintenance expertise
+- **Financial management** — budgeting, pricing, and accounting
+- **Marketing and sales** — ability to attract and retain customers
+
+---
+
+### Creating a Market
+
+Building a market requires understanding your customers. Key steps:
+
+1. **Market research** — Identify who benefits from biogas and what challenges they face.
+2. **Demonstration projects** — Show potential customers how biogas works and the benefits it provides.
+3. **Customer education** — Provide training and support so people feel confident using biogas.
+
+---
+
+### Business Operations and Procurement
+
+Efficient operations are essential. Consider:
+
+- **Supply chain management** — Ensure a steady supply of construction materials.
+- **Equipment sourcing** — Find reliable suppliers for system components.
+- **Service delivery** — Set up processes for installation, maintenance, and troubleshooting.
+
+---
+
+### Seed Funding
+
+Every business needs initial capital. Possible sources:
+
+| Source | Notes |
+|---|---|
+| Personal savings | Investing your own money reduces dependence on others |
+| Grants and competitions | Organisations that support renewable energy initiatives |
+| Loans and microfinance | Banks or microfinance institutions |
+| Partnerships | NGOs, government agencies, or investors who share your vision |
+
+---
+
+### Marketing and Sales
+
+Effective strategies for attracting customers:
+
+- **Word-of-mouth** — Encourage satisfied customers to share their experiences.
+- **Community engagement** — Host workshops or demonstrations to raise awareness.
+- **Online presence** — Social media and websites reach a broader audience.
+- **Partnerships** — Work with local businesses or organisations to promote biogas.
+
+---
+
+### The Business Model Shift: From Cost-Saving to Income-Generating
+
+Traditionally, biogas has been positioned as a cost-saving technology:
+
+> *"Save money on LPG or charcoal"* · *"Reduce your fuel expenses"*
+
+This positioning has limitations. If a family already spends little on fuel, the savings may not justify the digester investment (UGX 2.5 million for a typical 9 m³ system — a 12-year payback).
+
+**Productive use changes this equation fundamentally.** It transforms biogas from a cost-saving technology into an income-generating asset:
+
+| Framing | Annual value | Payback period |
+|---|---|---|
+| Cost saving ("save on cooking fuel") | UGX 200,000/year | 12 years |
+| Income-generating ("brooding services + briquette sales") | UGX 3,200,000/year | **0.3 years** |
+
+This reframing is critical for:
+
+1. Accelerating biogas adoption among farmers who see it as a business investment, not just a household expense.
+2. Justifying larger digesters that can support both household use AND productive applications.
+3. Creating sustainable businesses around biogas services (brooding-as-a-service, food processing, etc.).
+
+```{note}
+**Building a biogas business requires commitment, a strong team, and careful planning.** A customer-driven approach — always asking "what does this person need?" — is the single most important habit for long-term success.
+```
+
+---
+
 ## Business Planning Worksheet
 
 Download and complete this worksheet to build your own biogas business plan:
@@ -141,7 +259,7 @@ Download and complete this worksheet to build your own biogas business plan:
   <div style="flex:1;">
     <div style="font-weight:700;color:#827717;font-size:0.95rem;">Business Planning Sheet — Premium Template</div>
     <div style="font-size:0.82rem;color:#555;margin:0.2rem 0 0.5rem;">A structured worksheet covering income streams, costs, pricing, and 12-month projections for a biogas installation business.</div>
-    <a href="../assets/biogas_business_planning_sheet_premium.pdf" target="_blank"
+    <a href="../_static/biogas_business_planning_sheet_premium.pdf" target="_blank"
       style="display:inline-block;background:#827717;color:white;padding:0.38rem 1rem;border-radius:6px;font-size:0.82rem;font-weight:700;text-decoration:none;">⬇ Download PDF</a>
   </div>
 </div>

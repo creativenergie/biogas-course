@@ -103,13 +103,35 @@ A 30 kg capacity **Sparky dryer** with biogas heating was connected to the schoo
 **LPG ≠ Biogas.** The initial burners supplied with the dryer were designed for LPG pressure and could not generate sufficient heat from biogas. Always test equipment with actual biogas before full installation.
 ```
 
+**Drying performance:**
+
+| Crop/metric | Traditional sun-drying | Sparky dryer |
+|---|---|---|
+| Coffee | 3–5 days (longer in poor weather) | **24–36 hours** to correct moisture |
+| Maize | 3–5 days | **1–2 days** |
+| Maize moisture target | — | 12–13% for safe storage |
+| Coffee quality outcome | Variable | Independent test: excellent flavour, smell, texture |
+| Aflatoxin risk (maize) | Higher | Significantly reduced through faster, controlled drying |
+
+Other high-potential drying applications: fish (near lakeshores), medicinal herbs, vegetables (tomatoes, onions, leafy greens), fruits (mango, pineapple, banana), seeds.
+
 **Economic viability:**
+
+| | |
+|---|---|
+| Total investment (dryer + pipeline) | ~$800–1,100 USD |
+| Service fee model | UGX 500–1,000 per kg dried |
+| Per batch (30 kg) | UGX 15,000–30,000 |
+| Weekly capacity (3–4 batches) | UGX 45,000–120,000/week |
+| Annual revenue potential | UGX 2–6 million (depends on volume) |
+| Premium from quality (high-value crops) | +20–40% on coffee, spices |
+| Payback period | 1–3 years depending on volume and pricing |
 
 | User type | Verdict |
 |---|---|
-| Farmer cooperative (high-value crops) | ✅ Viable |
-| Individual smallholder | ⚠️ Marginal alone — viable if offering to neighbours |
-| School / community institution | ✅ Viable |
+| Farmer cooperative (high-value crops) | ✅ Viable — premium pricing + sufficient volume |
+| Individual smallholder | ⚠️ Marginal alone — viable if offering services to neighbours |
+| School / community institution | ✅ Viable — service + training model, diversified income |
 
 ---
 
@@ -202,6 +224,28 @@ Most households are surprised to discover how much gas they are already wasting.
     Opens in a new tab. Try changing the inputs — what happens if you reduce cooking time by 30 minutes? What if you add a second animal?
   </p>
 </div>
+```
+
+---
+
+## Environmental and Social Benefits
+
+The case for productive use extends well beyond farm economics.
+
+| Environmental | Social |
+|---|---|
+| **🌳 Less deforestation** — My Passion Farm avoided 480–560 kg of briquettes per brooding cycle. Multiplied across hundreds of farms, the impact on tree cover is significant. | **⏱ Labour reduction** — 40 person-hours per week previously spent making briquettes, eliminated entirely. Time reinvested in farm management and family. |
+| **🌍 Methane capture** — Methane is 28–36× more potent than CO₂ over 100 years. Burning it productively converts CH₄ to CO₂ and H₂O, and displaces petrol and LPG. | **❤️ Health improvements** — Reduced smoke exposure versus briquettes or charcoal. Cleaner working environments. Lower respiratory illness risk. |
+| **♻️ Circular economy** — Crops → bio-slurry → animals → waste → biogas → farm operations → back to crops. Multiple loops closed simultaneously. | **🤝 Community services** — One digester can serve many. Brooding and drying services let neighbours benefit without owning their own system. Demonstration effects accelerate adoption. |
+
+```{note}
+**The opportunity in summary:**
+- The resource exists — many digesters produce surplus gas that is currently vented.
+- The technology works — brooding, fodder chopping, and food drying are all proven in field conditions.
+- The economics are compelling — payback as short as 4 months for brooding.
+- Service models multiply impact — one investment can serve an entire community.
+
+The question is not whether productive use works. The question is: **which application fits your context, and who is your first neighbour to serve?**
 ```
 
 ---

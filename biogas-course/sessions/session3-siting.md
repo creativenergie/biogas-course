@@ -241,9 +241,9 @@ Convenience is the single biggest predictor of long-term use: short distance to 
   </div>
 
   <div class="quiz-question" data-question="s3q2" data-type="number"
-       data-answer="10" data-tolerance="0"
-       data-hint="Tree roots can extend at least as far as the crown — stay at least 10 m away.">
-    <p><strong><span class="q-type-badge num">Number</span> Q2. What is the minimum distance (in metres) a biogas plant should be from the crown of a mature tree?</strong></p>
+       data-answer="5" data-tolerance="0"
+       data-hint="The minimum safe distance from the crown edge of a mature tree is 5 metres.">
+    <p><strong><span class="q-type-badge num">Number</span> Q2. What is the minimum distance (in metres) a biogas plant should be from the crown edge of a mature tree?</strong></p>
     <input type="number" data-number="s3q2" placeholder="Enter metres" min="1" max="100">
     <p class="feedback" id="s3q2-feedback"></p>
   </div>

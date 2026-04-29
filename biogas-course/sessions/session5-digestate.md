@@ -154,6 +154,17 @@ This means it acts faster than raw manure — but timely, correct application is
 
 ---
 
+## Benefits of Bio-Slurry
+
+- **Plant nutrient supply:** Provides N, P, and K in plant-available forms.
+- **Soil health:** Boosts organic matter and water-holding capacity.
+- **Cost savings:** Reduces the need for chemical fertiliser purchases.
+- **Environmental gains:** Fewer greenhouse gas emissions than unmanaged manure.
+- **Crop health:** Some field observations report improved plant resistance to bacterial wilts and insect pests, particularly on banana crops. Rice seedlings soaked in diluted bio-slurry before transplanting show improved germination and early growth. Evidence is largely observational; no peer-reviewed trials confirm resistance to specific viral pathogens. *(Warnars & Oppenoorth, 2014)*
+- **Yield increases:** 10 t/ha application to maize has been shown to increase yields. Results vary by soil, climate, and crop type. *(Warnars & Oppenoorth, 2014)*
+
+---
+
 ## Choosing Your Application Method
 
 Before applying, answer three questions:
@@ -266,6 +277,13 @@ A **100-day composting process** makes bio-slurry safer, lighter, and longer-las
 An average digester produces ~30 tonnes of slurry per year, fertilising approximately 1 acre. Well-composted, the same slurry can fertilise up to **3 hectares** — a threefold gain through volume reduction and improved nutrient retention. *(SNV, 2023)*
 ```
 
+**When and how to apply composted bio-slurry:**
+
+- Apply before planting or during early growth stages.
+- Avoid applying within 48 hours of rain.
+- Do not use on waterlogged soil.
+- Maintain safe distances: at least **50 m from drinking-water sources**, **10 m from surface water bodies**.
+
 ---
 
 ## Quick Reference: Choosing Your Method
@@ -344,18 +362,68 @@ bsCalc();
 
 ---
 
+## Challenges and How to Manage Them
+
+### High nitrogen content — risk of plant burn
+
+High ammonium-N can burn young plants and cause losses if misapplied.
+
+- Always dilute liquid bio-slurry (minimum 1:1, 1:3 for seedlings).
+- Use composted material for sensitive crops.
+- Apply small amounts more frequently (split applications over the season).
+
+### Nitrogen loss during handling
+
+Ammonia volatilises when slurry is left uncovered, spread thinly across a surface, or dries in hot sun. Significant nitrogen can be lost this way, reducing fertiliser value and causing odour. Surface broadcast without soil incorporation is particularly prone to losses.
+
+- Cover storage and composting pits at all times.
+- Incorporate bio-slurry into the soil immediately after application.
+- Avoid spreading during hot, windy conditions.
+
+### Uneven nutrient distribution
+
+Irrigation channel application can lead to uneven spread.
+
+- Dilute before mixing with irrigation water.
+- Rotate inlet positions across the plot.
+- Use buckets or watering cans for small plots to ensure even coverage.
+
+### Nutrient runoff and water pollution
+
+Heavy rain after application can wash nutrients into water bodies.
+
+- Never apply before forecast rain.
+- Observe safe buffer distances from water sources (50 m from drinking water, 10 m from surface water).
+
+### Transport and labour
+
+Bio-slurry is bulky and heavy to move to distant fields.
+
+- Prioritise nearby plots for liquid application.
+- Compost to reduce volume before carrying to distant fields (reduces mass ~3×).
+
+---
+
 ## Health, Safety, and Pathogen Risk
 
-| Risk Level | When | Action |
+This is one of the most important sections. Bio-slurry from animal manure is generally safe when handled correctly, but risk levels vary significantly depending on what went into the digester.
+
+**Mesophilic digesters** (20–40°C — the most common type in smallholder settings) do **not** fully eliminate pathogens. Salmonella, E. coli, and helminth eggs can survive the digestion process, particularly with short retention times.
+
+**Thermophilic digesters** (50–60°C) achieve a higher degree of pathogen kill but are less common in rural Africa. Even here, composting the output adds a further safety margin. The 100-day composting process substantially reduces pathogen loads in all cases.
+
+| Risk level | Applies when | What to do |
 |---|---|---|
-| 🟢 **Safe** | Composted animal manure only | Suitable for all crops |
-| 🟡 **Caution** | Fresh liquid digestate from animals only | Dilute 1:1; avoid root vegetables |
-| 🔴 **Restrict** | Human waste co-digested | Compost 100 days before food crops |
+| 🟢 **Green — Safe** | Composted animal manure digestate only (cattle, pig, poultry) | Suitable for all crops including fresh vegetables. Apply 6+ weeks before harvest as an extra precaution. |
+| 🟡 **Amber — Caution** | Fresh liquid digestate from animal manure only | Safe when diluted 1:1 and applied to established crops. Avoid on root vegetables or crops where slurry contacts the edible part. Wash hands after handling. |
+| 🔴 **Red — Restrict** | Digesters co-digesting human waste (night soil, latrine contents) | Do not apply to food crops without composting first (minimum 100 days). Apply only to non-food crops or as pre-planting soil amendment. Strict hygiene essential. |
 
 **General hygiene:**
 - Wash hands with soap and water after handling bio-slurry.
-- Wash all tools after use.
-- Keep children away from composting pits.
+- Wash all tools (buckets, jerry cans, watering cans) after use.
+- Do not eat, drink, or touch your face while working with slurry.
+- Keep children away from composting pits and slurry storage areas.
+- If bio-slurry contacts skin, wash immediately with clean water.
 
 ---
 
@@ -440,11 +508,34 @@ bsCalc();
 Use this worksheet to plan your bio-slurry application: record your daily slurry volume, choose your method, and tick off the safe use checklist.
 ```
 
-## Summary
+```{note}
+**Key things to remember from Session 5**
 
-- Bio-slurry is a **valuable fertiliser** — not waste.
-- Choose your application method based on **distance, crop stage, and weather**.
-- Always **dilute** liquid slurry before applying.
-- **Compost for 100 days** to make it safe for sensitive food crops.
+Bio-slurry is the transformed fertiliser that completes your biogas system — the manure you fed in Session 2 becomes the fertiliser you apply now.
+
+- Choose your method based on three questions: **distance, crop stage, and weather**.
+- Always dilute liquid slurry (1:1 for established crops, 1:3 for seedlings).
+- Composting for 100 days makes bio-slurry safer, lighter to carry, and longer-lasting.
+- Know what went into your digester — human waste co-digestion requires composting before any food crop application.
+- For maize, 10 t/ha (approximately 1,000 litres undiluted per 0.1 ha plot) has been shown to increase yields — split into 2–3 applications per season. *(Warnars & Oppenoorth, 2014)*
+```
 
 Next: **[Session 6: Productive Use of Biogas](session6-productive-use)**
+
+---
+
+## References
+
+The following sources underpin the content of this session. Those marked ★ are particularly recommended for practitioners wanting to go deeper.
+
+★ **Warnars, L. & Oppenoorth, H. (2014).** *Bioslurry: A Supreme Fertiliser — A Study on Bioslurry Results and Uses.* SNV/Hivos. Covers smallholder field evidence across Africa and Asia, including per-plant and per-hectare rates. Start here if you only read one reference.
+
+★ **Gurung, B. (1997/1998).** *Training Manual: Proper Utilisation of Bio-Slurry.* Biogas Support Programme (BSP/SNV), Nairobi. The original practitioner guide with dilution ratios, crop-by-crop guidance, and composting pit instructions.
+
+★ **SNV (2023).** *Biogas, Food Security and Climate Change.* snv.org. Overview of bio-slurry value chains in Africa, including the 30 t/year output figure and 3 ha composting yield.
+
+**Möller, K. & Müller, T. (2012).** Effects of anaerobic digestion on digestate nutrient availability and crop growth: A review. *Engineering in Life Sciences*, 12(3), 242–257. [Source of NH₄-N data: 45–80% of total N as ammonium, 2–2.5× uplift over raw manure.]
+
+**Bonten, L.T.C. et al. (2014).** *Is bio-slurry from household digesters a better fertilizer than manure? A literature review.* Alterra Report 2519, Wageningen UR.
+
+**Kisaka, M.O. et al. (2023).** Smallholder farmers' knowledge on the use of bioslurry as soil fertility amendment for potato production in Kenya. *Land Degradation & Development*, 34(3).
