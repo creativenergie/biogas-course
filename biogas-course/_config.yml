@@ -34,7 +34,7 @@ html:
     </p>
 
 repository:
-  url: https://github.com/keepexploring/surplus-biogas
+  url: https://github.com/creativenergie/biogas-course
   branch: main
 
 # Table of contents

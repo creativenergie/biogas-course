@@ -1,6 +1,8 @@
 # CREATIVenergie Biogas Course — Deployment Notes
 
-Live URL: https://keepexploring.github.io/surplus-biogas/
+Live URL: https://creativenergie.github.io/biogas-course/
+
+> Note: `https://keepexploring.github.io/surplus-biogas/` is the separate Surplus Biogas Calculator tool linked from Session 6 — a different repo.
 
 ---
 
@@ -10,11 +12,11 @@ The site deploys automatically on every `git push` via GitHub Actions.
 
 ### First-time GitHub setup (one-time only)
 
-1. **Create the GitHub repo** at github.com → New repository → name: `surplus-biogas` (under `keepexploring` account)
+1. **Create the GitHub repo** at github.com → New repository → name: `biogas-course` (under `creativenergie` account)
 
 2. **Add the remote and push:**
    ```bash
-   git remote add origin https://github.com/keepexploring/surplus-biogas.git
+   git remote add origin https://github.com/creativenergie/biogas-course.git
    git push -u origin main
    ```
 
@@ -38,7 +40,7 @@ The site deploys automatically on every `git push` via GitHub Actions.
 
 5. **Trigger a deploy** by pushing any change, or go to Actions → Run workflow manually.
 
-The site goes live at: **https://keepexploring.github.io/surplus-biogas/**
+The site goes live at: **https://creativenergie.github.io/biogas-course/**
 Build takes ~2 minutes.
 
 ### Subsequent updates (day-to-day)
