@@ -4,6 +4,57 @@ Live URL: https://keepexploring.github.io/surplus-biogas/
 
 ---
 
+## Deploying to GitHub Pages
+
+The site deploys automatically on every `git push` via GitHub Actions.
+
+### First-time GitHub setup (one-time only)
+
+1. **Create the GitHub repo** at github.com → New repository → name: `surplus-biogas` (under `keepexploring` account)
+
+2. **Add the remote and push:**
+   ```bash
+   git remote add origin https://github.com/keepexploring/surplus-biogas.git
+   git push -u origin main
+   ```
+
+3. **Enable GitHub Pages:** Repo → Settings → Pages → Source: **GitHub Actions** → Save
+
+4. **Add GitHub Secrets** (Repo → Settings → Secrets → Actions → New repository secret):
+
+   | Secret name | Value |
+   |---|---|
+   | `APPS_SCRIPT_URL` | from `_config.env` |
+   | `QUIZ_FORM_ID` | from `_config.env` |
+   | `ENTRY_NAME` | from `_config.env` |
+   | `ENTRY_CODE` | from `_config.env` |
+   | `ENTRY_SESSION` | from `_config.env` |
+   | `ENTRY_SCORE` | from `_config.env` |
+   | `REG_FORM_ID` | from `_config.env` |
+   | `REG_ENTRY_NAME` | from `_config.env` |
+   | `REG_ENTRY_EMAIL` | from `_config.env` |
+   | `REG_ENTRY_CTRY` | from `_config.env` |
+   | `REG_ENTRY_CODE` | from `_config.env` |
+
+5. **Trigger a deploy** by pushing any change, or go to Actions → Run workflow manually.
+
+The site goes live at: **https://keepexploring.github.io/surplus-biogas/**
+Build takes ~2 minutes.
+
+### Subsequent updates (day-to-day)
+
+```bash
+# Edit .md files, then:
+git add -p          # stage selectively, or:
+git add .           # stage everything
+git commit -m "describe what changed"
+git push            # triggers automatic build + deploy (~2 min)
+```
+
+You do NOT need to build locally to deploy — GitHub Actions does the build. Local builds are only for previewing before pushing.
+
+---
+
 ## How Config Works
 
 All sensitive values (Apps Script URL, Google Form IDs) live in one file:
