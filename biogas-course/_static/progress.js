@@ -40,13 +40,14 @@ const BADGES = [
 
 const _devMode = !APPS_SCRIPT_URL.startsWith('https://');
 
-async function registerCode(name, email, country) {
+async function registerCode(name, email, country, honey) {
   if (_devMode) return { success: true };
   try {
     const url = `${APPS_SCRIPT_URL}?action=register`
       + `&name=${encodeURIComponent(name)}`
       + `&email=${encodeURIComponent(email)}`
-      + `&country=${encodeURIComponent(country)}`;
+      + `&country=${encodeURIComponent(country)}`
+      + `&honey=${encodeURIComponent(honey || '')}`;
     const res = await fetch(url);
     return await res.json();
   } catch {

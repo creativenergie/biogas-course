@@ -45,6 +45,12 @@ function doGet(e) {
   const country = (e.parameter.country || '').trim();
   const session = (e.parameter.session || '').trim();
   const score   = (e.parameter.score   || '').trim();
+  const honey   = (e.parameter.honey   || '').trim();
+
+  // Honeypot: if the hidden field has a value, silently fake success
+  if (honey) {
+    return respond({ success: true, message: 'ok' });
+  }
 
   try {
     const sheet = getOrCreateSheet();

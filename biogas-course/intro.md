@@ -40,6 +40,10 @@ This course covers everything you need to design, build, and safely operate a bi
     <input type="text" id="reg-country" placeholder="e.g. Uganda"
       style="width:100%;padding:0.45rem 0.6rem;border:1px solid #bbb;border-radius:4px;font-size:1rem;box-sizing:border-box;margin-bottom:1rem;" />
 
+    <!-- Honeypot — hidden from real users; bots fill it in -->
+    <input type="text" id="reg-honey" name="website" tabindex="-1" autocomplete="off"
+      style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
+
     <p id="reg-error" style="color:#c62828;font-size:0.9rem;margin:0 0 0.6rem 0;display:none;"></p>
 
     <button onclick="handleRegister()"
@@ -127,6 +131,15 @@ async function handleRegister() {
   const errEl   = document.getElementById('reg-error');
   const btn     = document.querySelector('#reg-form button');
 
+  // Honeypot: real users never fill this in — bots do
+  if (document.getElementById('reg-honey')?.value) {
+    // Silently fake success so the bot thinks it worked
+    document.getElementById('reg-form').style.display = 'none';
+    document.getElementById('reg-sent-email').textContent = email;
+    document.getElementById('reg-sent').style.display = 'block';
+    return;
+  }
+
   if (!name || !email.includes('@')) {
     errEl.textContent = 'Please enter your name and a valid email address.';
     errEl.style.display = 'block';
@@ -142,8 +155,9 @@ async function handleRegister() {
   // Call Apps Script — generates code server-side and emails it
   let result = { success: true };
   if (window.biogasProgress?.registerCode) {
+    const honey = document.getElementById('reg-honey')?.value || '';
     try {
-      result = await window.biogasProgress.registerCode(name, email, country);
+      result = await window.biogasProgress.registerCode(name, email, country, honey);
     } catch {
       result = { success: false, error: 'network' };
     }
@@ -153,6 +167,11 @@ async function handleRegister() {
 
   if (result.error === 'network') {
     errEl.textContent = 'Connection error — please check your internet and try again.';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (result.success === false) {
+    errEl.textContent = 'Registration failed — please try again or contact support.';
     errEl.style.display = 'block';
     return;
   }
