@@ -23,6 +23,7 @@ __pycache__/
 *.env
 secrets.json
 biogas-course/_config.env
+.development_notes_hidden.md
 
 # Node (if any tooling is added)
 node_modules/
