@@ -18,54 +18,63 @@ This course covers everything you need to design, build, and safely operate a bi
 <!-- ── REGISTRATION PANEL (shown until registered) ─────────────────────── -->
 <div id="reg-panel" style="max-width:520px;">
 
-  <div style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:1.2rem 1.4rem;border-radius:6px;margin-bottom:1.2rem;">
-    <p style="margin:0 0 0.6rem 0;font-size:1.05rem;font-weight:bold;">📋 Register to begin</p>
+  <!-- Step 1: Registration form -->
+  <div id="reg-form">
+    <div style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:1.2rem 1.4rem;border-radius:6px;margin-bottom:1.2rem;">
+      <p style="margin:0 0 0.6rem 0;font-size:1.05rem;font-weight:bold;">📋 Register to begin</p>
+      <p style="margin:0;font-size:0.95rem;color:#444;">
+        Enter your details below. We'll email you a unique <strong>BG-XXXX course code</strong> —
+        use it to access all eight sessions and track your progress.
+      </p>
+    </div>
+
+    <label for="reg-name" style="display:block;margin-bottom:0.25rem;font-weight:bold;">Full name *</label>
+    <input type="text" id="reg-name" placeholder="e.g. Grace Nakato"
+      style="width:100%;padding:0.45rem 0.6rem;border:1px solid #bbb;border-radius:4px;font-size:1rem;box-sizing:border-box;margin-bottom:0.8rem;" />
+
+    <label for="reg-email" style="display:block;margin-bottom:0.25rem;font-weight:bold;">Email address *</label>
+    <input type="email" id="reg-email" placeholder="e.g. grace@example.com"
+      style="width:100%;padding:0.45rem 0.6rem;border:1px solid #bbb;border-radius:4px;font-size:1rem;box-sizing:border-box;margin-bottom:0.8rem;" />
+
+    <label for="reg-country" style="display:block;margin-bottom:0.25rem;font-weight:bold;">Country</label>
+    <input type="text" id="reg-country" placeholder="e.g. Uganda"
+      style="width:100%;padding:0.45rem 0.6rem;border:1px solid #bbb;border-radius:4px;font-size:1rem;box-sizing:border-box;margin-bottom:1rem;" />
+
+    <p id="reg-error" style="color:#c62828;font-size:0.9rem;margin:0 0 0.6rem 0;display:none;"></p>
+
+    <button onclick="handleRegister()"
+      style="padding:0.5rem 1.8rem;background:#2e7d32;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;font-weight:bold;">
+      Send My Code →
+    </button>
+  </div>
+
+  <!-- Step 2: After registration success -->
+  <div id="reg-sent" style="display:none;background:#e8f5e9;border-left:4px solid #2e7d32;padding:1.2rem 1.4rem;border-radius:6px;">
+    <p style="margin:0 0 0.5rem 0;font-weight:bold;">✅ Code sent!</p>
     <p style="margin:0;font-size:0.95rem;color:#444;">
-      Enter your details below to unlock the course. A unique <strong>course code</strong>
-      will be generated for you — write it down so you can resume from a different device.
+      Check your inbox at <strong id="reg-sent-email"></strong> for your <strong>BG-XXXX</strong> code,
+      then enter it below.
     </p>
   </div>
 
-  <label for="reg-name" style="display:block;margin-bottom:0.25rem;font-weight:bold;">Full name *</label>
-  <input type="text" id="reg-name" placeholder="e.g. Grace Nakato"
-    style="width:100%;padding:0.45rem 0.6rem;border:1px solid #bbb;border-radius:4px;font-size:1rem;box-sizing:border-box;margin-bottom:0.8rem;" />
-
-  <label for="reg-email" style="display:block;margin-bottom:0.25rem;font-weight:bold;">Email address *</label>
-  <input type="email" id="reg-email" placeholder="e.g. grace@example.com"
-    style="width:100%;padding:0.45rem 0.6rem;border:1px solid #bbb;border-radius:4px;font-size:1rem;box-sizing:border-box;margin-bottom:0.8rem;" />
-
-  <label for="reg-country" style="display:block;margin-bottom:0.25rem;font-weight:bold;">Country</label>
-  <input type="text" id="reg-country" placeholder="e.g. Uganda"
-    style="width:100%;padding:0.45rem 0.6rem;border:1px solid #bbb;border-radius:4px;font-size:1rem;box-sizing:border-box;margin-bottom:1rem;" />
-
-  <p id="reg-error" style="color:#c62828;font-size:0.9rem;margin:0 0 0.6rem 0;display:none;">
-    Please enter your name and a valid email address.
-  </p>
-
-  <button onclick="handleRegister()"
-    style="padding:0.5rem 1.8rem;background:#2e7d32;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;font-weight:bold;">
-    Register &amp; Start Course →
-  </button>
-
   <hr style="margin:1.5rem 0;border:none;border-top:1px solid #ddd;">
 
-  <details style="font-size:0.9rem;color:#555;">
-    <summary style="cursor:pointer;font-weight:bold;color:#333;">Returning learner? Resume with your registration code</summary>
-    <div style="margin-top:0.8rem;">
-      <p style="margin:0 0 0.5rem 0;">
-        If you previously registered on another device, enter your code
-        (format: <code>BG-XXXX</code>) below. It will be verified against our
-        registration records so your scores stay linked.
-      </p>
-      <input type="text" id="resume-code" placeholder="e.g. BG-7X4K" maxlength="7"
-        style="width:140px;padding:0.4rem 0.6rem;border:1px solid #bbb;border-radius:4px;font-size:1rem;text-transform:uppercase;letter-spacing:0.05em;" />
-      <button onclick="handleResume()"
-        style="margin-left:0.5rem;padding:0.4rem 1rem;background:#1565c0;color:white;border:none;border-radius:4px;cursor:pointer;font-size:0.95rem;">
-        Use this code
-      </button>
-      <p id="resume-error" style="color:#c62828;font-size:0.85rem;margin:0.4rem 0 0 0;display:none;"></p>
-    </div>
-  </details>
+  <!-- Code entry (always visible — new registrants use code from email; returning learners use existing code) -->
+  <p style="font-weight:bold;margin:0 0 0.4rem 0;">Enter your course code</p>
+  <p style="font-size:0.9rem;color:#555;margin:0 0 0.8rem 0;">
+    Enter the <code>BG-XXXX</code> code from your email to access the course.
+  </p>
+  <div style="display:flex;gap:0.5rem;align-items:flex-start;flex-wrap:wrap;">
+    <input type="text" id="resume-code" placeholder="BG-XXXX" maxlength="7"
+      autocomplete="off" autocapitalize="characters" spellcheck="false"
+      style="width:140px;padding:0.45rem 0.6rem;border:1px solid #bbb;border-radius:4px;font-size:1rem;text-transform:uppercase;letter-spacing:0.08em;" />
+    <button onclick="handleResume()"
+      style="padding:0.45rem 1.2rem;background:#1565c0;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;font-weight:bold;">
+      Access Course →
+    </button>
+  </div>
+  <p id="resume-error" style="color:#c62828;font-size:0.85rem;margin:0.5rem 0 0 0;display:none;"></p>
+
 </div>
 
 <!-- ── REGISTERED VIEW (hidden until registered) ───────────────────────── -->
@@ -111,38 +120,12 @@ This course covers everything you need to design, build, and safely operate a bi
 <script>
 // ─── Registration ──────────────────────────────────────────────────────────
 
-// Replace with your actual Google Form registration pre-fill URL.
-// Fields: entry.NAME, entry.EMAIL, entry.COUNTRY, entry.CODE
-const REG_FORM_ID     = '%%REG_FORM_ID%%';
-const REG_ENTRY_NAME  = '%%REG_ENTRY_NAME%%';
-const REG_ENTRY_EMAIL = '%%REG_ENTRY_EMAIL%%';
-const REG_ENTRY_CTRY  = '%%REG_ENTRY_CTRY%%';
-const REG_ENTRY_CODE  = '%%REG_ENTRY_CODE%%';
-
-function submitRegistrationForm(name, email, country, code) {
-  // Fire-and-forget iframe submission so the page doesn't navigate away
-  const url = [
-    `https://docs.google.com/forms/d/e/${REG_FORM_ID}/formResponse?`,
-    `${REG_ENTRY_NAME}=${encodeURIComponent(name)}`,
-    `&${REG_ENTRY_EMAIL}=${encodeURIComponent(email)}`,
-    `&${REG_ENTRY_CTRY}=${encodeURIComponent(country)}`,
-    `&${REG_ENTRY_CODE}=${encodeURIComponent(code)}`,
-    `&submit=Submit`,
-  ].join('');
-  const iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.src = url;
-  document.body.appendChild(iframe);
-  // Clean up after a few seconds
-  setTimeout(() => iframe.remove(), 5000);
-}
-
 async function handleRegister() {
   const name    = document.getElementById('reg-name').value.trim();
   const email   = document.getElementById('reg-email').value.trim();
   const country = document.getElementById('reg-country').value.trim();
   const errEl   = document.getElementById('reg-error');
-  const btn     = document.querySelector('#reg-panel button');
+  const btn     = document.querySelector('#reg-form button');
 
   if (!name || !email.includes('@')) {
     errEl.textContent = 'Please enter your name and a valid email address.';
@@ -150,41 +133,41 @@ async function handleRegister() {
     return;
   }
   errEl.style.display = 'none';
-  if (btn) { btn.textContent = 'Registering…'; btn.disabled = true; }
+  if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
 
-  // Save name & email locally
+  // Save name & email locally so they're available after code entry
   localStorage.setItem('biogas_learner_name', name);
   localStorage.setItem('biogas_learner_email', email);
 
-  // Generate course code if needed
-  let code = localStorage.getItem('biogas_course_code');
-  if (!code) {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    code = 'BG-';
-    for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
-    localStorage.setItem('biogas_course_code', code);
-  }
-
-  // Register code in Apps Script sheet (background — don't block UX on failure)
+  // Call Apps Script — generates code server-side and emails it
+  let result = { success: true };
   if (window.biogasProgress?.registerCode) {
-    window.biogasProgress.registerCode(code, name, email, country)
-      .catch(() => {}); // fail silently — Google Form is the fallback record
+    try {
+      result = await window.biogasProgress.registerCode(name, email, country);
+    } catch {
+      result = { success: false, error: 'network' };
+    }
   }
 
-  // Submit to Google Form (backup record with name/email/country)
-  submitRegistrationForm(name, email, country, code);
+  if (btn) { btn.textContent = 'Send My Code →'; btn.disabled = false; }
 
-  // Grant access immediately — they just registered
-  localStorage.setItem('biogas_access_granted', 'true');
+  if (result.error === 'network') {
+    errEl.textContent = 'Connection error — please check your internet and try again.';
+    errEl.style.display = 'block';
+    return;
+  }
 
-  if (btn) { btn.textContent = 'Register & Start Course →'; btn.disabled = false; }
-  showRegisteredView(name, code);
+  // Show confirmation; keep code entry visible for user to enter their emailed code
+  document.getElementById('reg-form').style.display = 'none';
+  document.getElementById('reg-sent-email').textContent = email;
+  document.getElementById('reg-sent').style.display = 'block';
+  document.getElementById('resume-code').focus();
 }
 
 async function handleResume() {
   const input = document.getElementById('resume-code').value.trim().toUpperCase();
   const errEl = document.getElementById('resume-error');
-  const btn   = document.querySelector('#reg-panel details button');
+  const btn   = document.querySelector('#reg-panel div[style*="display:flex"] button');
 
   if (!/^BG-[A-Z2-9]{4}$/.test(input)) {
     errEl.textContent = 'Invalid code format — codes look like BG-7X4K.';
@@ -202,26 +185,28 @@ async function handleResume() {
     if (result.error === 'network') {
       errEl.textContent = 'Could not connect to verify your code. Check your connection and try again.';
       errEl.style.display = 'block';
-      if (btn) { btn.textContent = 'Use this code'; btn.disabled = false; }
+      if (btn) { btn.textContent = 'Access Course →'; btn.disabled = false; }
       return;
     }
   }
 
   if (!valid) {
-    errEl.textContent = 'Code not found — check you have previously registered, or contact your course provider.';
+    errEl.textContent = 'Code not found — check your email for your registration code, or register above.';
     errEl.style.display = 'block';
-    if (btn) { btn.textContent = 'Use this code'; btn.disabled = false; }
+    if (btn) { btn.textContent = 'Access Course →'; btn.disabled = false; }
     return;
   }
 
-  // Code is valid — restore it and grant access
+  // Code is valid — store it and grant access
   localStorage.setItem('biogas_course_code', input);
   localStorage.setItem('biogas_access_granted', 'true');
 
-  const name = document.getElementById('reg-name').value.trim() || localStorage.getItem('biogas_learner_name') || 'Learner';
+  const name = document.getElementById('reg-name')?.value.trim()
+    || localStorage.getItem('biogas_learner_name')
+    || 'Learner';
   localStorage.setItem('biogas_learner_name', name);
 
-  if (btn) { btn.textContent = 'Use this code'; btn.disabled = false; }
+  if (btn) { btn.textContent = 'Access Course →'; btn.disabled = false; }
   showRegisteredView(name, input);
 }
 

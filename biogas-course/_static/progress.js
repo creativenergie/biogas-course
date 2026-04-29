@@ -40,11 +40,10 @@ const BADGES = [
 
 const _devMode = !APPS_SCRIPT_URL.startsWith('https://');
 
-async function registerCode(code, name, email, country) {
+async function registerCode(name, email, country) {
   if (_devMode) return { success: true };
   try {
     const url = `${APPS_SCRIPT_URL}?action=register`
-      + `&code=${encodeURIComponent(code)}`
       + `&name=${encodeURIComponent(name)}`
       + `&email=${encodeURIComponent(email)}`
       + `&country=${encodeURIComponent(country)}`;
