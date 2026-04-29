@@ -171,7 +171,7 @@ async function handleRegister() {
     return;
   }
   if (result.success === false) {
-    errEl.textContent = 'Registration failed — please try again or contact support.';
+    errEl.textContent = 'Registration failed — ' + (result.error || 'please try again or contact support.');
     errEl.style.display = 'block';
     return;
   }
