@@ -52,6 +52,9 @@ jobs:
         working-directory: biogas-course
         run: jupyter-book build .
 
+      - name: Copy CNAME to build output
+        run: cp biogas-course/CNAME biogas-course/_build/html/CNAME
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
