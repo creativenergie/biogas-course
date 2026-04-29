@@ -82,14 +82,14 @@ function handleRegister(sheet, name, email, country) {
   const existing = getRowByEmail(sheet, email);
   if (existing) {
     const existingCode = existing[0];
-    sendCodeEmail(email, name, existingCode);
+    try { sendCodeEmail(email, name, existingCode); } catch(e) {}
     return respond({ success: true, message: 'Code resent to ' + email });
   }
 
   // Generate a unique code
   const code = generateUniqueCode(sheet);
 
-  // Store in sheet
+  // Store in sheet first — registration succeeds even if email fails
   sheet.appendRow([
     code,
     name,
@@ -100,9 +100,18 @@ function handleRegister(sheet, name, email, country) {
     '', '', ''
   ]);
 
-  // Email the code
-  sendCodeEmail(email, name, code);
+  // Email the code (non-fatal — code is already saved)
+  var emailOk = true;
+  try {
+    sendCodeEmail(email, name, code);
+  } catch(e) {
+    emailOk = false;
+    Logger.log('Email failed for ' + email + ': ' + e.message);
+  }
 
+  if (!emailOk) {
+    return respond({ success: true, message: 'Registered. Email delivery failed — contact info@creativenergie.co.uk with your name and we will send your code manually. Your code: ' + code });
+  }
   return respond({ success: true, message: 'Code sent to ' + email });
 }
 
@@ -173,11 +182,18 @@ https://creativenergie.co.uk`;
   </div>
 </div>`;
 
-  GmailApp.sendEmail(email, EMAIL_SUBJECT, body, {
+  MailApp.sendEmail({
+    to: email,
+    subject: EMAIL_SUBJECT,
+    body: body,
     htmlBody: htmlBody,
     name: FROM_NAME,
-    from: 'info@creativenergie.co.uk',
   });
+}
+
+function testEmail() {
+  sendCodeEmail('joel@creativenergie.co.uk', 'Test User', 'BG-TEST');
+  Logger.log('testEmail completed');
 }
 
 // ── Helpers ────────────────────────────────────────────────────────────────
