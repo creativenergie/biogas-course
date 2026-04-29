@@ -1,0 +1,54 @@
+# Book settings
+title: "Biogas Training Course"
+author: CREATIVenergie
+copyright: "2025 CREATIVenergie"
+
+# Auto-exclude patterns
+exclude_patterns:
+  - _build
+  - .venv
+  - Thumbs.db
+  - .DS_Store
+  - "**.ipynb_checkpoints"
+  - README.md
+
+# Execution settings (no notebooks, so this is minimal)
+execute:
+  execute_notebooks: off
+
+# HTML-specific settings
+html:
+  favicon: assets/favicon-flame.svg
+  use_issues_button: false
+  use_repository_button: true
+  use_edit_page_button: false
+  home_page_in_navbar: true
+  extra_footer: |
+    <p>
+      Built with <a href="https://jupyterbook.org">Jupyter Book</a> &mdash;
+      Content by <a href="https://creativenergie.co.uk">CREATIVenergie</a>.
+    </p>
+    <p style="font-size:0.85em; color:#888;">
+      ⚠️ This course is for educational purposes. Always follow local safety
+      regulations when building or operating a biogas system.
+    </p>
+
+repository:
+  url: https://github.com/keepexploring/surplus-biogas
+  branch: main
+
+# Table of contents
+# (driven by _toc.yml)
+
+# Sphinx extensions
+sphinx:
+  config:
+    html_show_sourcelink: false
+    html_js_files:
+      - progress.js
+      - quiz.js
+    html_css_files:
+      - quiz.css
+    html_theme_options:
+      show_navbar_depth: 2
+      navigation_depth: 4

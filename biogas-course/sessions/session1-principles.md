@@ -1,0 +1,403 @@
+# Session 1: Principles of Biogas
+
+## Learning Objectives
+
+By the end of this session, you should be able to:
+
+1. Understand how airtightness, temperature, and the Carbon/Nitrogen ratio affect biogas production.
+2. Understand the design of the CREATIVenergie Expanding Bag Digester and how it works.
+3. Compare different types of biodigesters and their advantages and disadvantages.
+
+---
+
+## Case Study: Overview of a Biogas Digester
+
+*Elvis introduces how a biogas digester works and its many uses.*
+
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin-bottom:1rem;">
+  <iframe src="https://www.youtube.com/embed/g9RhO4622rI"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+</div>
+
+---
+
+## Biogas Production Basics
+
+Biogas is produced when micro-organisms break down organic matter in an **anaerobic** (oxygen-free) environment. This is the same natural process that occurs inside a cow's stomach, where microbes digest food and release methane gas.
+
+There are four key principles you must understand to run a successful biogas digester.
+
+---
+
+### 1. Airtightness is Essential
+
+Biogas production only occurs **without oxygen** — this process is called **Anaerobic Digestion (AD)**. If the digester is not completely sealed, microbes will not produce methane effectively.
+
+Airtightness is achieved two ways:
+- Ensuring the bag is properly sealed.
+- Maintaining the correct balance of input and output so the slurry always covers the throat, preventing gas escaping.
+
+```{figure} ../assets/image3.png
+:alt: Sealed vs unsealed digester — airtightness comparison
+:width: 90%
+
+A properly sealed digester retains all gas for cooking and productive use.
+```
+
+---
+
+### 2. Temperature Control
+
+Temperature has a major impact on biogas production:
+
+| Temperature Range | Effect |
+|---|---|
+| Below 10°C | Production stops |
+| 10–29°C | Slow production |
+| **30–40°C** (Mesophilic) | **Ideal range — most common** |
+| 40–70°C (Thermophilic) | Higher yield, but sensitive to fluctuation |
+
+Keeping temperature stable within 30–40°C helps maintain efficient, continuous gas production.
+
+```{figure} ../assets/image25.png
+:alt: Temperature effect on biogas production — chart showing optimal mesophilic range
+:width: 80%
+
+Biogas production rate across the temperature spectrum — the mesophilic range (30–40°C) offers the best balance of yield and stability.
+```
+
+```{raw} html
+<div style="background:#f8fffe;border:2px solid #c8e6c9;border-radius:10px;padding:1.25rem;margin:1.25rem 0;">
+  <h4 style="margin:0 0 0.4rem;color:#1b5e20;font-size:1rem;">🌡️ Temperature Explorer — try it!</h4>
+  <p style="margin:0 0 0.9rem;color:#555;font-size:0.875rem;">Drag the slider to see how temperature affects biogas production rate.</p>
+  <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+    <div style="flex:0 0 auto;">
+      <svg width="56" height="200" viewBox="0 0 56 200" style="display:block;overflow:visible;">
+        <rect x="19" y="16" width="14" height="138" rx="7" fill="#e0e0e0" stroke="#bdbdbd" stroke-width="1"/>
+        <rect x="20" y="126" width="12" height="28" rx="1" fill="#90caf9"/>
+        <rect x="20" y="71"  width="12" height="55" rx="1" fill="#ffe082"/>
+        <rect x="20" y="43"  width="12" height="28" rx="1" fill="#81c784"/>
+        <rect x="20" y="16"  width="12" height="27" rx="1" fill="#ef9a9a"/>
+        <rect x="23" id="tmerc" y="58" width="6" rx="3" height="96" fill="#e53935"/>
+        <circle cx="26" cy="167" r="13" fill="#e53935"/>
+        <line x1="33" y1="154" x2="39" y2="154" stroke="#9e9e9e" stroke-width="1.5"/>
+        <text x="41" y="158" font-size="9" fill="#757575">0°C</text>
+        <line x1="33" y1="126" x2="39" y2="126" stroke="#9e9e9e" stroke-width="1.5"/>
+        <text x="41" y="130" font-size="9" fill="#757575">10°C</text>
+        <line x1="33" y1="71"  x2="39" y2="71"  stroke="#9e9e9e" stroke-width="1.5"/>
+        <text x="41" y="75"  font-size="9" fill="#757575">29°C</text>
+        <line x1="33" y1="43"  x2="39" y2="43"  stroke="#9e9e9e" stroke-width="1.5"/>
+        <text x="41" y="47"  font-size="9" fill="#757575">40°C</text>
+        <line x1="33" y1="16"  x2="39" y2="16"  stroke="#9e9e9e" stroke-width="1.5"/>
+        <text x="41" y="20"  font-size="9" fill="#757575">70°C</text>
+      </svg>
+    </div>
+    <div style="flex:1;min-width:180px;">
+      <div style="font-weight:700;margin-bottom:0.5rem;font-size:1rem;">Temperature: <span id="tdsp" style="color:#2e7d32;">35</span>°C</div>
+      <input type="range" id="tslider" min="0" max="75" value="35" step="1"
+             style="width:100%;cursor:pointer;accent-color:#2e7d32;height:6px;"/>
+      <div id="tstat" style="margin-top:0.8rem;padding:0.55rem 0.85rem;border-radius:7px;font-size:0.875rem;font-weight:600;background:#e8f5e9;color:#1b5e20;border:1px solid #a5d6a7;">
+        ✅ 30–40°C — optimal mesophilic range
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var sl=document.getElementById('tslider'),dp=document.getElementById('tdsp'),
+      st=document.getElementById('tstat'),mc=document.getElementById('tmerc');
+  function upd(){
+    var t=+sl.value; dp.textContent=t;
+    var top=Math.round(154-(t/70)*138); top=Math.max(16,Math.min(154,top));
+    mc.setAttribute('y',top); mc.setAttribute('height',154-top);
+    if(t<10){st.style.cssText='padding:0.55rem 0.85rem;border-radius:7px;font-size:0.875rem;font-weight:600;background:#e3f2fd;color:#0d47a1;border:1px solid #90caf9;';st.innerHTML='❄️ Below 10°C — microbes dormant, <strong>no gas production</strong>';}
+    else if(t<30){st.style.cssText='padding:0.55rem 0.85rem;border-radius:7px;font-size:0.875rem;font-weight:600;background:#fff8e1;color:#e65100;border:1px solid #ffe082;';st.innerHTML='🐢 10–29°C — gas forming but <strong>slowly</strong>';}
+    else if(t<=40){st.style.cssText='padding:0.55rem 0.85rem;border-radius:7px;font-size:0.875rem;font-weight:600;background:#e8f5e9;color:#1b5e20;border:1px solid #a5d6a7;';st.innerHTML='✅ 30–40°C — <strong>optimal mesophilic range</strong>';}
+    else{st.style.cssText='padding:0.55rem 0.85rem;border-radius:7px;font-size:0.875rem;font-weight:600;background:#ffebee;color:#b71c1c;border:1px solid #ef9a9a;';st.innerHTML='🔥 40–70°C — thermophilic, higher yield but <strong>fragile</strong>';}
+  }
+  sl.addEventListener('input',upd); upd();
+})();
+</script>
+```
+
+---
+
+### 3. Retention Time
+
+**Retention time** is how long organic material stays inside the digester before it is pushed out. For maximum biogas yield, material needs to stay inside for around **40 days** at 30–40°C.
+
+Things that affect retention time:
+- Available digester size
+- Temperature
+- Type and amount of feedstock
+
+```{note}
+The more you feed the digester each day, the faster you push older material out — shortening retention time.
+```
+
+```{figure} ../assets/image15.png
+:alt: Retention time diagram — material flow through the digester over 40 days
+:width: 80%
+
+Material moves through the digester over a 40-day retention period, emerging as nutrient-rich bio-slurry.
+```
+
+---
+
+### 4. Carbon-to-Nitrogen (C/N) Ratio
+
+The ideal C/N ratio for biogas production is **20–30** (20–30 parts carbon per 1 part nitrogen).
+
+| Problem | Cause | Effect |
+|---|---|---|
+| C/N too high | Too much carbon | Very slow decomposition |
+| C/N too low | Too much nitrogen | Harms microbes, reduces gas |
+
+#### Common Feedstocks and Their C/N Ratios
+
+| Feedstock | C/N Ratio | Notes |
+|---|---|---|
+| **Cow Dung** | 20–30 | ✅ Ideal — best feedstock |
+| Pig Droppings | 13–20 | Good, may need balancing |
+| Chicken Manure | 7–10 | High in nitrogen — mix with straw |
+| Kitchen Food Waste | 13–16 | Good, but avoid bones or sharp objects |
+| Human Faeces | 6–10 | Usable — extend retention time to 95 days |
+| Sawdust | 200–500 | Very high carbon — must mix with nitrogen-rich material |
+
+```{figure} ../assets/image10.png
+:alt: C/N ratio infographic — feedstock comparison chart
+:width: 85%
+
+C/N ratios of common feedstocks — the ideal window of 20–30 is where cow dung sits naturally.
+```
+
+```{raw} html
+<div style="background:#f8fffe;border:2px solid #c8e6c9;border-radius:10px;padding:1.25rem;margin:1.25rem 0;">
+  <h4 style="margin:0 0 0.4rem;color:#1b5e20;font-size:1rem;">⚖️ C/N Ratio Explorer — click a feedstock</h4>
+  <p style="margin:0 0 0.9rem;color:#555;font-size:0.875rem;">See where each material falls relative to the ideal 20–30 range.</p>
+  <div id="cn-cards" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;"></div>
+  <!-- Scale bar -->
+  <div style="position:relative;margin-bottom:0.4rem;">
+    <div style="display:flex;height:28px;border-radius:6px;overflow:hidden;border:1px solid #e0e0e0;">
+      <div style="flex:0 0 13%;background:#ffcdd2;" title="0–10 — too low N"></div>
+      <div style="flex:0 0 17%;background:#fff9c4;" title="10–19 — borderline"></div>
+      <div style="flex:0 0 20%;background:#c8e6c9;border-left:2px solid #4caf50;border-right:2px solid #4caf50;" title="20–30 — ideal"></div>
+      <div style="flex:0 0 50%;background:#ffe0b2;" title="30+ — too high C"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:9px;color:#9e9e9e;padding:2px 0;position:relative;">
+      <span style="position:absolute;left:0;">0</span>
+      <span style="position:absolute;left:13%;">10</span>
+      <span style="position:absolute;left:30%;color:#2e7d32;font-weight:700;">20 ✓</span>
+      <span style="position:absolute;left:50%;color:#2e7d32;font-weight:700;">30 ✓</span>
+      <span style="position:absolute;left:70%;">50</span>
+      <span style="position:absolute;right:0;">100+</span>
+    </div>
+    <!-- Pointer needle -->
+    <div id="cn-needle" style="position:absolute;top:0;width:3px;height:28px;background:#1b5e20;border-radius:2px;left:36%;transition:left 0.35s ease;display:none;"></div>
+  </div>
+  <div id="cn-info" style="margin-top:1rem;padding:0.55rem 0.85rem;border-radius:7px;font-size:0.875rem;font-weight:600;background:#f5f5f5;color:#555;border:1px solid #e0e0e0;">
+    Select a feedstock to explore its C/N ratio.
+  </div>
+</div>
+<script>
+(function(){
+  var feedstocks=[
+    {name:'Cow Dung',     cn:[20,30], color:'#2e7d32', advice:'✅ Ideal C/N ratio — perfect feedstock for biogas'},
+    {name:'Pig Manure',   cn:[13,20], color:'#388e3c', advice:'👍 Good — slightly low nitrogen, may need mixing'},
+    {name:'Chicken Manure',cn:[7,10], color:'#f57f17', advice:'⚠️ High nitrogen — mix with straw to raise C/N ratio'},
+    {name:'Kitchen Waste',cn:[13,16], color:'#0288d1', advice:'👍 Good — avoid bones or sharp objects'},
+    {name:'Human Waste',  cn:[6,10],  color:'#7b1fa2', advice:'⚠️ High nitrogen — extend retention time to 95 days'},
+    {name:'Sawdust',      cn:[200,500],color:'#bf360c',advice:'❌ Very high carbon — must blend with nitrogen-rich material'},
+  ];
+  var container=document.getElementById('cn-cards');
+  var needle=document.getElementById('cn-needle');
+  var info=document.getElementById('cn-info');
+  var active=null;
+  // Scale: 0–100 maps to 0–100% of bar, sawdust capped at 100 for display
+  function cnToPercent(cn){ return Math.min(100, (cn/100)*100)+'%'; }
+  feedstocks.forEach(function(f,i){
+    var btn=document.createElement('button');
+    btn.textContent=f.name;
+    btn.style.cssText='padding:0.35rem 0.7rem;border-radius:20px;border:2px solid '+f.color+';background:#fff;color:'+f.color+';font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.15s;';
+    btn.addEventListener('click',function(){
+      if(active) active.style.background='#fff';
+      btn.style.background=f.color; btn.style.color='#fff'; active=btn;
+      var mid=(f.cn[0]+f.cn[1])/2;
+      var pct=Math.min(96,Math.max(2,(mid/100)*100));
+      needle.style.left=pct+'%'; needle.style.display='block';
+      var bg='#e8f5e9',col='#1b5e20',brd='#a5d6a7';
+      if(mid<15){bg='#ffebee';col='#b71c1c';brd='#ef9a9a';}
+      else if(mid<20){bg='#fff8e1';col='#e65100';brd='#ffe082';}
+      else if(mid>30){bg='#fff3e0';col='#bf360c';brd='#ffcc80';}
+      info.style.cssText='margin-top:1rem;padding:0.55rem 0.85rem;border-radius:7px;font-size:0.875rem;font-weight:600;background:'+bg+';color:'+col+';border:1px solid '+brd+';';
+      info.innerHTML='<strong>'+f.name+'</strong> — C/N ratio: '+f.cn[0]+(f.cn[1]>f.cn[0]?'–'+f.cn[1]:'')+' &nbsp;|&nbsp; '+f.advice;
+    });
+    container.appendChild(btn);
+  });
+})();
+</script>
+```
+
+---
+
+## Case Study: Feeding the Digester
+
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin-bottom:1rem;">
+  <iframe src="https://www.youtube.com/embed/60IjQEaZsZs"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+</div>
+
+---
+
+## Common Types of Biodigester
+
+Now that you understand the principles, here are the two most common digester designs:
+
+| Feature | Bag Digester | Fixed Dome Digester |
+|---|---|---|
+| Cost | Low | Higher |
+| Construction | Easy | Requires skilled technicians |
+| Gas pressure | Low | High |
+| Durability | Moderate | High |
+| Best for | Small-scale / household | Larger-scale / long-term |
+
+### The CREATIVenergie Expanding Bag Digester
+
+This course focuses on the **CREATIVenergie Expanding Bag Digester** — a design that combines the strengths of both types.
+
+How it works:
+1. Organic waste (e.g. cow dung + water) enters a sealed plastic/rubber bag.
+2. Microbes break it down, producing biogas, and the bag expands.
+3. Gas is piped for cooking and other uses.
+4. After 30–40 days, fully digested material flows out as **bio-slurry** — a valuable fertiliser.
+
+---
+
+## Session 1 Quiz
+
+```{raw} html
+<div class="quiz-container" id="quiz-session1">
+
+  <div class="quiz-question" data-question="s1q1" data-type="mc" data-answer="b">
+    <p><strong><span class="q-type-badge mc">MC</span> Q1. What does <em>anaerobic digestion</em> mean?</strong></p>
+    <label><input type="radio" name="s1q1" value="a"> Breaking down organic matter <em>using</em> oxygen</label>
+    <label><input type="radio" name="s1q1" value="b"> Breaking down organic matter <em>without</em> oxygen</label>
+    <label><input type="radio" name="s1q1" value="c"> Burning organic matter to release gas</label>
+    <label><input type="radio" name="s1q1" value="d"> Drying organic matter into fertiliser</label>
+    <p class="feedback" id="s1q1-feedback"></p>
+  </div>
+
+  <div class="quiz-question" data-question="s1q2" data-type="tf" data-answer="false"
+       data-hint="Microbes become dormant but recover when temperatures rise again.">
+    <p><strong><span class="q-type-badge tf">True / False</span> Q2. If a digester cools below 10°C, the microbes die permanently and the digester must be restarted from scratch.</strong></p>
+    <label><input type="radio" name="s1q2" value="true"> True</label>
+    <label><input type="radio" name="s1q2" value="false"> False</label>
+    <p class="feedback" id="s1q2-feedback"></p>
+  </div>
+
+  <div class="quiz-question" data-question="s1q3" data-type="mc" data-answer="c">
+    <p><strong><span class="q-type-badge mc">MC</span> Q3. Which feedstock has the ideal C/N ratio (20–30) for biogas production?</strong></p>
+    <label><input type="radio" name="s1q3" value="a"> Sawdust (C/N: 200–500)</label>
+    <label><input type="radio" name="s1q3" value="b"> Chicken manure (C/N: 7–10)</label>
+    <label><input type="radio" name="s1q3" value="c"> Cow dung (C/N: 20–30)</label>
+    <label><input type="radio" name="s1q3" value="d"> Human faeces (C/N: 6–10)</label>
+    <p class="feedback" id="s1q3-feedback"></p>
+  </div>
+
+  <div class="quiz-question" data-question="s1q4" data-type="fill"
+       data-answer="airtightness|air tightness|anaerobic|airtight"
+       data-hint="Think about what 'anaerobic' literally requires.">
+    <p><strong><span class="q-type-badge fill">Fill in</span> Q4. Biogas production requires the complete absence of oxygen — this property of the digester is called ___.</strong></p>
+    <input type="text" data-fill="s1q4" placeholder="Type your answer…">
+    <p class="quiz-input-hint">One word. (Hint: the gas can only form in a sealed, oxygen-free environment.)</p>
+    <p class="feedback" id="s1q4-feedback"></p>
+  </div>
+
+  <div class="quiz-question" data-question="s1q5" data-type="number"
+       data-answer="35" data-tolerance="5"
+       data-hint="The mesophilic sweet spot is 30–40°C — the midpoint is 35°C.">
+    <p><strong><span class="q-type-badge num">Number</span> Q5. What is the midpoint of the ideal mesophilic temperature range for biogas production? (°C)</strong></p>
+    <input type="number" data-number="s1q5" placeholder="Enter °C" min="0" max="100">
+    <p class="quiz-input-hint">Acceptable range: 30–40°C. Enter the midpoint value.</p>
+    <p class="feedback" id="s1q5-feedback"></p>
+  </div>
+
+  <div class="quiz-question" data-question="s1q6" data-type="number"
+       data-answer="40" data-tolerance="2"
+       data-hint="The retention time pipeline diagram shows 40 days.">
+    <p><strong><span class="q-type-badge num">Number</span> Q6. How many days does cow dung typically need to stay in the digester for optimal biogas production?</strong></p>
+    <input type="number" data-number="s1q6" placeholder="Enter days" min="1" max="365">
+    <p class="quiz-input-hint">Enter the retention time in days.</p>
+    <p class="feedback" id="s1q6-feedback"></p>
+  </div>
+
+  <div class="quiz-question" data-question="s1q7" data-type="match"
+       data-answer="cow-dung:cn-ideal,chicken:cn-low,sawdust:cn-high"
+       data-hint="Cow dung = 20–30 (ideal), Chicken manure = 7–10 (too much N), Sawdust = 200–500 (too much C).">
+    <p><strong><span class="q-type-badge match">Match</span> Q7. Drag each feedstock to its correct C/N ratio category.</strong></p>
+    <p style="font-size:0.85rem;color:#666;margin-top:0;">Drag items from the right column and drop them onto the matching category on the left.</p>
+    <div style="display:flex;gap:1rem;margin-top:0.5rem;flex-wrap:wrap;">
+      <ul class="match-left" style="list-style:none;padding:0;margin:0;flex:1;min-width:150px;">
+        <li data-id="cow-dung"
+            style="padding:0.5rem 0.75rem;margin:0.35rem 0;border:2px dashed #a5d6a7;border-radius:8px;min-height:2.4rem;background:#f9fffe;">
+          🌿 Cow Dung
+        </li>
+        <li data-id="chicken"
+            style="padding:0.5rem 0.75rem;margin:0.35rem 0;border:2px dashed #ffcc80;border-radius:8px;min-height:2.4rem;background:#fffdf5;">
+          🐔 Chicken Manure
+        </li>
+        <li data-id="sawdust"
+            style="padding:0.5rem 0.75rem;margin:0.35rem 0;border:2px dashed #ffab91;border-radius:8px;min-height:2.4rem;background:#fff8f6;">
+          🪵 Sawdust
+        </li>
+      </ul>
+      <ul class="match-right" style="list-style:none;padding:0;margin:0;flex:1;min-width:150px;">
+        <li data-id="cn-ideal"
+            style="padding:0.5rem 0.75rem;margin:0.35rem 0;border:1px solid #4caf50;border-radius:8px;background:#e8f5e9;cursor:grab;font-weight:600;font-size:0.875rem;">
+          C/N 20–30 — Ideal
+        </li>
+        <li data-id="cn-low"
+            style="padding:0.5rem 0.75rem;margin:0.35rem 0;border:1px solid #ef9a9a;border-radius:8px;background:#ffebee;cursor:grab;font-weight:600;font-size:0.875rem;">
+          C/N 7–10 — Too nitrogen-rich
+        </li>
+        <li data-id="cn-high"
+            style="padding:0.5rem 0.75rem;margin:0.35rem 0;border:1px solid #ffcc80;border-radius:8px;background:#fff3e0;cursor:grab;font-weight:600;font-size:0.875rem;">
+          C/N 200–500 — Too carbon-rich
+        </li>
+      </ul>
+    </div>
+    <p class="feedback" id="s1q7-feedback"></p>
+  </div>
+
+  <button class="quiz-check-btn"
+    onclick="checkQuiz('session1', ['s1q1','s1q2','s1q3','s1q4','s1q5','s1q6','s1q7'])">
+    Check My Answers
+  </button>
+
+  <div id="session1-result"></div>
+  <div id="session1-submit-section" class="quiz-submit-section" style="display:none;">
+    <p>Submit your score to receive credit for this session:</p>
+    <a id="session1-form-link" href="#" target="_blank" class="quiz-submit-btn">
+      Submit Score via Google Forms →
+    </a>
+  </div>
+</div>
+```
+
+---
+
+## Summary
+
+The four key principles of biogas production are:
+1. **Airtightness** — no oxygen allowed
+2. **Temperature** — keep it 30–40°C
+3. **Retention time** — 40 days for optimal breakdown
+4. **C/N Ratio** — aim for 20–30; cow dung is ideal
+
+In the next session we will learn how to **size** your digester correctly.
+
+Next: **[Session 2: Sizing](session2-sizing)**

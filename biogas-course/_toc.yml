@@ -1,0 +1,21 @@
+format: jb-book
+root: intro
+chapters:
+  - file: sessions/session1-principles
+    title: "Session 1: Principles of Biogas"
+  - file: sessions/session2-sizing
+    title: "Session 2: Sizing"
+  - file: sessions/session3-siting
+    title: "Session 3: Siting"
+  - file: sessions/session4-safety
+    title: "Session 4: Safety"
+  - file: sessions/session5-digestate
+    title: "Session 5: Digestate & Fertiliser"
+  - file: sessions/session6-productive-use
+    title: "Session 6: Productive Use"
+  - file: sessions/session7-building
+    title: "Session 7: Building the Digester"
+  - file: sessions/session8-business
+    title: "Session 8: Biogas as a Business"
+  - file: sessions/game-biogaz
+    title: "🎮 Bio-Gaz: Village Entrepreneur Game"

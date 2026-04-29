@@ -1,0 +1,435 @@
+/* ─── Biogas Course — Quiz Styles ─────────────────────────────────────────── */
+
+/* Container */
+.quiz-container {
+  max-width: 740px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Individual question card */
+.quiz-question {
+  background: #ffffff;
+  border: 2px solid #c8e6c9;
+  border-left: 6px solid #2e7d32;
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem 1rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  transition: border-color 0.2s;
+}
+.quiz-question:focus-within {
+  border-color: #1b5e20;
+  box-shadow: 0 2px 12px rgba(46,125,50,0.15);
+}
+
+/* Question text */
+.quiz-question > p:first-child {
+  margin: 0 0 0.85rem;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.45;
+}
+
+/* ── Radio / Checkbox options ──────────────────────────────────────────────── */
+
+.quiz-question label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0.3rem 0;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  border: 1.5px solid #e0e0e0;
+  background: #fafafa;
+  cursor: pointer;
+  font-size: 0.97rem;
+  color: #222;
+  line-height: 1.45;
+  transition: background 0.15s, border-color 0.15s;
+  user-select: none;
+}
+.quiz-question label:hover {
+  background: #e8f5e9;
+  border-color: #81c784;
+}
+.quiz-question label input[type="radio"],
+.quiz-question label input[type="checkbox"] {
+  margin-top: 0.18rem;
+  flex-shrink: 0;
+  accent-color: #2e7d32;
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+/* ── Fill-in-blank & Number inputs ─────────────────────────────────────────── */
+
+.quiz-question input[type="text"],
+.quiz-question input[type="number"] {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #bbb;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+  background: #fff;
+  color: #111;
+}
+.quiz-question input[type="text"]:focus,
+.quiz-question input[type="number"]:focus {
+  border-color: #2e7d32;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
+}
+.quiz-input-hint {
+  font-size: 0.82rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+/* ── Drag-to-match ─────────────────────────────────────────────────────────── */
+
+.match-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1.5rem;
+  margin-top: 0.5rem;
+}
+.match-col-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555;
+  margin-bottom: 0.35rem;
+}
+.match-left,
+.match-right {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.match-left li {
+  background: #f1f8e9;
+  border: 2px dashed #aed581;
+  border-radius: 6px;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.93rem;
+  color: #1a1a1a;
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+.match-right li {
+  background: #e3f2fd;
+  border: 2px solid #90caf9;
+  border-radius: 6px;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.93rem;
+  color: #0d47a1;
+  cursor: grab;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
+  user-select: none;
+}
+.match-right li:hover {
+  background: #bbdefb;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+.match-right li:active { cursor: grabbing; }
+.match-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 3px 10px;
+  background: #1565c0;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.match-badge::after {
+  content: "×";
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+.match-badge:hover { background: #b71c1c; }
+
+/* ── Feedback line ─────────────────────────────────────────────────────────── */
+
+.feedback {
+  margin-top: 0.7rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.97rem;
+  min-height: 1.8rem;
+  transition: background 0.2s;
+}
+.feedback:empty { display: none; }
+
+/* ── Result banner ─────────────────────────────────────────────────────────── */
+
+.quiz-result-banner {
+  margin-top: 1.2rem;
+  padding: 1rem 1.4rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: #e8f5e9;
+  border: 2px solid #a5d6a7;
+  color: #1b5e20;
+}
+
+/* ── Check button ──────────────────────────────────────────────────────────── */
+
+.quiz-check-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 2rem;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 6px rgba(46,125,50,0.25);
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+.quiz-check-btn:hover {
+  background: #1b5e20;
+  box-shadow: 0 4px 12px rgba(46,125,50,0.3);
+  transform: translateY(-1px);
+}
+.quiz-check-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(46,125,50,0.2);
+}
+
+/* ── Submit section ────────────────────────────────────────────────────────── */
+
+.quiz-submit-section {
+  margin-top: 1.5rem;
+  padding: 1rem 1.4rem;
+  background: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  font-size: 0.97rem;
+  color: #1b5e20;
+}
+.quiz-submit-section p { margin: 0 0 0.7rem; font-weight: 600; }
+.quiz-submit-btn {
+  display: inline-block;
+  padding: 0.55rem 1.5rem;
+  background: #1565c0;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.97rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(21,101,192,0.22);
+  transition: background 0.15s;
+}
+.quiz-submit-btn:hover { background: #0d47a1; }
+
+/* ── Question type badges ──────────────────────────────────────────────────── */
+
+.q-type-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 1px 7px;
+  border-radius: 10px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+.q-type-badge.mc   { background: #e3f2fd; color: #1565c0; }
+.q-type-badge.tf   { background: #f3e5f5; color: #6a1b9a; }
+.q-type-badge.fill { background: #fff8e1; color: #e65100; }
+.q-type-badge.num  { background: #fce4ec; color: #880e4f; }
+.q-type-badge.match { background: #e8f5e9; color: #1b5e20; }
+
+/* ─── Badge system ─────────────────────────────────────────────────────────── */
+
+@keyframes badgePop {
+  0%   { transform: scale(0.2) translateY(30px); opacity: 0; }
+  55%  { transform: scale(1.18) translateY(-6px); opacity: 1; }
+  75%  { transform: scale(0.93) translateY(2px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+@keyframes badgeGlow {
+  0%, 100% { box-shadow: 0 0 16px rgba(255,215,0,0.4), 0 4px 20px rgba(0,0,0,0.18); }
+  50%       { box-shadow: 0 0 36px rgba(255,215,0,0.8), 0 4px 28px rgba(0,0,0,0.22); }
+}
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(80px) rotate(360deg); opacity: 0; }
+}
+
+/* Popup overlay */
+#biogas-badge-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+#biogas-badge-popup .badge-popup-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  max-width: 340px;
+  width: 90%;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  animation: badgePop 0.55s cubic-bezier(.22,1,.36,1) forwards;
+  position: relative;
+  overflow: hidden;
+}
+#biogas-badge-popup .badge-popup-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #2e7d32, #81c784, #2e7d32);
+}
+.badge-popup-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  margin: 0 auto 1rem;
+  animation: badgeGlow 1.8s ease-in-out infinite;
+}
+.badge-popup-earned {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin: 0 0 0.3rem;
+}
+.badge-popup-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 0.25rem;
+}
+.badge-popup-sub {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 0 1.2rem;
+}
+.badge-popup-score {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+.badge-popup-close {
+  display: block;
+  width: 100%;
+  padding: 0.55rem;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.badge-popup-close:hover { background: #1b5e20; }
+.badge-popup-timer {
+  font-size: 0.78rem;
+  color: #bbb;
+  margin-top: 0.5rem;
+}
+
+/* Badge row in progress bar */
+.biogas-badge-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 4px 16px 6px;
+  border-top: 1px solid #f0f0f0;
+}
+.biogas-badge-row .badge-row-label {
+  font-size: 0.78rem;
+  color: #666;
+  white-space: nowrap;
+  font-weight: 600;
+  margin-right: 2px;
+}
+.badge-pip {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  border: 2.5px solid;
+  cursor: default;
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+  position: relative;
+}
+.badge-pip.earned {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.badge-pip.earned:hover {
+  transform: scale(1.25);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+  z-index: 10;
+}
+.badge-pip.locked {
+  background: #eee !important;
+  border-color: #ccc !important;
+  opacity: 0.35;
+  filter: grayscale(1);
+  font-size: 0.85rem;
+}
+.badge-pip-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.badge-pip:hover .badge-pip-tooltip { opacity: 1; }

@@ -1,0 +1,10 @@
+# Build output
+_build/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Config with real secrets — never commit
+_config.env
