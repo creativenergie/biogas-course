@@ -118,6 +118,159 @@ function szZone(n){
 </script>
 ```
 
+```{raw} html
+<div style="background:#fff3e0;border:2px solid #ffcc80;border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:sans-serif;">
+  <h4 style="margin:0 0 0.2rem;color:#e65100;font-size:1.05rem;">🔍 Spot the Hazards — click each marker to reveal the risk</h4>
+  <p style="margin:0 0 0.5rem;color:#555;font-size:0.85rem;">Six hazards are hidden in this scene. Click the orange circles to find them.</p>
+  <div style="font-size:0.82rem;color:#e65100;margin-bottom:0.75rem;font-weight:600;">Found: <span id="hz-count">0</span> / 6</div>
+
+  <div style="max-width:540px;margin:0 auto;">
+  <svg viewBox="0 0 540 285" style="width:100%;display:block;border-radius:8px;">
+    <!-- Field -->
+    <rect width="540" height="285" fill="#b2dfdb"/>
+    <!-- Ground strip -->
+    <rect x="0" y="210" width="540" height="75" fill="#a5d6a7"/>
+
+    <!-- House -->
+    <rect x="22" y="95" width="100" height="90" fill="#90a4ae" rx="4" stroke="#607d8b" stroke-width="1.5"/>
+    <polygon points="18,95 72,55 126,95" fill="#78909c" stroke="#546e7a" stroke-width="1"/>
+    <rect x="30" y="110" width="26" height="20" fill="#fff9c4" rx="2" stroke="#f9a825" stroke-width="1"/>
+    <rect x="78" y="152" width="20" height="33" fill="#8d6e63" rx="2"/>
+    <!-- Stove in kitchen -->
+    <rect x="32" y="145" width="30" height="20" fill="#546e7a" rx="2"/>
+    <circle cx="40" cy="151" r="4" fill="#78909c"/>
+    <circle cx="52" cy="151" r="4" fill="#78909c"/>
+    <text x="72" y="193" text-anchor="middle" font-size="8.5" fill="#37474f" font-weight="600">house</text>
+
+    <!-- Gas pipe -->
+    <line x1="122" y1="163" x2="252" y2="168" stroke="#424242" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="150" cy="164" r="3.5" fill="#616161"/>
+    <circle cx="205" cy="166" r="3.5" fill="#616161"/>
+    <!-- Gas valve -->
+    <rect x="168" y="158" width="13" height="10" rx="2" fill="#c62828"/>
+    <text x="174" y="153" text-anchor="middle" font-size="7" fill="#444">valve</text>
+
+    <!-- Digester -->
+    <ellipse cx="355" cy="168" rx="82" ry="58" fill="#4db6ac" stroke="#00796b" stroke-width="2.5"/>
+    <text x="355" y="162" text-anchor="middle" font-size="11" fill="white" font-weight="700">DIGESTER</text>
+    <text x="355" y="177" text-anchor="middle" font-size="9" fill="#e0f7fa">gas bag</text>
+
+    <!-- Inlet -->
+    <ellipse cx="283" cy="210" rx="10" ry="6" fill="#4e342e" stroke="#3e2723" stroke-width="1.5"/>
+    <text x="283" y="223" text-anchor="middle" font-size="7.5" fill="#4e342e">inlet</text>
+
+    <!-- Trees -->
+    <circle cx="490" cy="75" r="24" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+    <rect cx="490" y="93" x="486" width="8" height="14" fill="#795548"/>
+    <circle cx="510" cy="245" r="18" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+    <rect cx="510" y="261" x="506" width="7" height="11" fill="#795548"/>
+
+    <!-- HAZARD 1: Open inlet -->
+    <g id="hz-g0" onclick="hzClick(0)" style="cursor:pointer;">
+      <circle cx="283" cy="208" r="15" fill="#f44336" opacity="0.88">
+        <animate attributeName="r" values="15;18;15" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="283" y="213" text-anchor="middle" font-size="13" style="pointer-events:none;">⚠️</text>
+    </g>
+
+    <!-- HAZARD 2: Child on bag -->
+    <g id="hz-g1" onclick="hzClick(1)" style="cursor:pointer;">
+      <text x="370" y="118" text-anchor="middle" font-size="16" style="pointer-events:none;">👦</text>
+      <circle cx="370" cy="110" r="15" fill="#ff9800" opacity="0.82">
+        <animate attributeName="r" values="15;18;15" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+      <text x="370" y="115" text-anchor="middle" font-size="13" style="pointer-events:none;">⚠️</text>
+    </g>
+
+    <!-- HAZARD 3: Smoking near digester -->
+    <g id="hz-g2" onclick="hzClick(2)" style="cursor:pointer;">
+      <text x="450" y="183" text-anchor="middle" font-size="16" style="pointer-events:none;">🚬</text>
+      <circle cx="450" cy="195" r="15" fill="#f44336" opacity="0.88">
+        <animate attributeName="r" values="15;18;15" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <text x="450" y="200" text-anchor="middle" font-size="13" style="pointer-events:none;">⚠️</text>
+    </g>
+
+    <!-- HAZARD 4: Entering digester -->
+    <g id="hz-g3" onclick="hzClick(3)" style="cursor:pointer;">
+      <text x="295" y="160" text-anchor="middle" font-size="15" style="pointer-events:none;">🧗</text>
+      <circle cx="283" cy="168" r="15" fill="#b71c1c" opacity="0.9">
+        <animate attributeName="r" values="15;18;15" dur="1.6s" repeatCount="indefinite"/>
+      </circle>
+      <text x="283" y="173" text-anchor="middle" font-size="13" style="pointer-events:none;">⚠️</text>
+    </g>
+
+    <!-- HAZARD 5: Gas before match at stove -->
+    <g id="hz-g4" onclick="hzClick(4)" style="cursor:pointer;">
+      <circle cx="55" cy="148" r="15" fill="#f44336" opacity="0.88">
+        <animate attributeName="r" values="15;18;15" dur="2.1s" repeatCount="indefinite"/>
+      </circle>
+      <text x="55" y="153" text-anchor="middle" font-size="13" style="pointer-events:none;">⚠️</text>
+    </g>
+
+    <!-- HAZARD 6: No fence around digester -->
+    <g id="hz-g5" onclick="hzClick(5)" style="cursor:pointer;">
+      <circle cx="355" cy="240" r="15" fill="#ff9800" opacity="0.85">
+        <animate attributeName="r" values="15;18;15" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <text x="355" y="245" text-anchor="middle" font-size="13" style="pointer-events:none;">⚠️</text>
+    </g>
+
+    <!-- Scene labels -->
+    <text x="355" y="268" text-anchor="middle" font-size="8" fill="#555">no fence visible</text>
+    <text x="450" y="215" text-anchor="middle" font-size="8" fill="#555">5 m zone</text>
+    <text x="55" y="168" text-anchor="middle" font-size="8" fill="#555">stove</text>
+    <text x="295" y="190" text-anchor="middle" font-size="8" fill="#555">digester edge</text>
+  </svg>
+  </div>
+
+  <div id="hz-info" style="margin-top:0.85rem;padding:0.8rem 1rem;border-radius:8px;font-size:0.875rem;background:#fff8e1;border:1.5px solid #ffcc80;color:#555;line-height:1.6;">
+    👆 Click any pulsing marker on the diagram above to reveal the hazard.
+  </div>
+</div>
+<script>
+var hzData=[
+  {t:'⚠️ Open inlet — fall risk',
+   b:'The inlet and outlet pits are deep. Without covers, people or animals can fall in and drown. Always keep them covered when not loading the digester, and fence off the area.',
+   bg:'#fff8e1',bc:'#ffb300',tc:'#e65100'},
+  {t:'⚠️ Child on digester bag — damage and injury',
+   b:'Children sitting or playing on the gas bag can puncture it, causing dangerous gas leaks. They are also exposed to slurry and toxic gas. Enforce a strict 1 m exclusion zone — no children near the digester.',
+   bg:'#fce4ec',bc:'#ef9a9a',tc:'#b71c1c'},
+  {t:'⚠️ Smoking within 5 m — explosion risk',
+   b:'Methane is highly flammable. A cigarette, open flame, or spark within 5 m can ignite escaping gas and cause an explosion. No smoking, fires, or electrical equipment allowed within the 5 m zone.',
+   bg:'#ffebee',bc:'#ef9a9a',tc:'#c62828'},
+  {t:'⚠️ Entering the digester — LIFE-THREATENING',
+   b:'Never enter the digester under any circumstances — even when recently emptied. Pockets of H₂S (hydrogen sulfide) and CO₂ remain inside. H₂S is toxic at very low concentrations. CO₂ causes asphyxiation. People have died doing this.',
+   bg:'#b71c1c',bc:'#7f0000',tc:'white'},
+  {t:'⚠️ Gas on before match — fire risk',
+   b:'Always light the match first, then open the gas. Never turn gas on to an unlit burner — methane accumulates in the air instantly. When the match is finally applied, the gas-air mixture can ignite explosively.',
+   bg:'#fff3e0',bc:'#ffb74d',tc:'#bf360c'},
+  {t:'⚠️ No exclusion zone — unauthorized access',
+   b:'Without a fence, children and animals can access the digester freely — risking falls into the inlet, puncturing the bag, or exposure to slurry. Install a 1 m fence around the digester before commissioning.',
+   bg:'#fff8e1',bc:'#ffe082',tc:'#e65100'},
+];
+var hzFound=0;
+function hzClick(i){
+  var g=document.getElementById('hz-g'+i);
+  if(!g.dataset.found){
+    g.dataset.found='1';
+    hzFound++;
+    document.getElementById('hz-count').textContent=hzFound;
+    var circ=g.querySelector('circle');
+    circ.setAttribute('fill','#2e7d32');
+    circ.setAttribute('opacity','0.9');
+    var warn=g.querySelector('text');
+    warn.textContent='✅';
+    circ.querySelectorAll('animate').forEach(function(a){a.remove();});
+  }
+  var d=hzData[i];
+  var el=document.getElementById('hz-info');
+  el.style.background=d.bg; el.style.borderColor=d.bc; el.style.color=d.tc;
+  el.innerHTML='<strong>'+d.t+'</strong><br>'+d.b;
+}
+</script>
+```
+
 ---
 
 ## Safety Features of the CREATIVenergie System
@@ -234,6 +387,87 @@ For those new to gas cooking:
 2. Ensure the **flame ignites properly**.
 3. Adjust to a **blue, steady flame** — no smell or excessive noise.
 4. Turn the gas **off after cooking**.
+
+---
+
+## 🎯 Practice: Identify the Hazards
+
+```{raw} html
+<div style="background:#fff8e1;border:2px solid #ffe082;border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:sans-serif;">
+  <h4 style="margin:0 0 0.2rem;color:#e65100;font-size:1.05rem;">⚠️ Click on the Hazards</h4>
+  <p style="margin:0 0 1.1rem;color:#555;font-size:0.85rem;">Six situations are shown below. Click the ones you think are <strong>hazardous</strong> — then check your answers.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.75rem;margin-bottom:1rem;" id="hz-cards"></div>
+  <button onclick="hzCheck()" style="background:#e65100;color:white;border:none;padding:0.55rem 1.4rem;border-radius:7px;font-size:0.95rem;font-weight:700;cursor:pointer;margin-bottom:0.75rem;">Check My Answers</button>
+  <div id="hz-result" style="display:none;padding:0.75rem 1rem;border-radius:8px;font-size:0.875rem;"></div>
+</div>
+<script>
+(function(){
+  var situations=[
+    {icon:'🚬',label:'Someone smokes a cigarette 4 m from the digester.',hazard:true,
+     explain:'HAZARD — Smoking within 5 m risks igniting escaping methane. The exclusion zone for ignition sources is 5 m.'},
+    {icon:'🧤',label:'You wear rubber gloves when loading dung into the inlet.',hazard:false,
+     explain:'SAFE — Wearing gloves is the correct practice when handling slurry. It protects against disease.'},
+    {icon:'⛔',label:'You enter the digester to inspect it after emptying.',hazard:true,
+     explain:'HAZARD — Never enter the digester. H₂S and CO₂ linger inside and can kill within seconds.'},
+    {icon:'🔒',label:'You shut the main gas valve after finishing cooking.',hazard:false,
+     explain:'SAFE — Turning off the valve after every use is exactly the "T" in EAT.'},
+    {icon:'👦',label:'A child sits on top of the gas bag while you work nearby.',hazard:true,
+     explain:'HAZARD — Children must not access the digester area. They can puncture the bag or fall into the inlet.'},
+    {icon:'🔥',label:'You light a match first, then slowly open the gas valve.',hazard:false,
+     explain:'SAFE — Correct procedure: always light the match before opening the gas.'},
+    {icon:'🕳️',label:'You leave the inlet open and uncovered overnight.',hazard:true,
+     explain:'HAZARD — An uncovered inlet is a fall risk for people and animals, and allows pests to enter.'},
+    {icon:'💧',label:'You mix dung 1:1 with water before adding it each day.',hazard:false,
+     explain:'SAFE — The 1:1 dung-to-water mixing ratio is the correct feeding procedure.'},
+  ];
+
+  var selected={};
+  var container=document.getElementById('hz-cards');
+  situations.forEach(function(s,i){
+    var card=document.createElement('div');
+    card.id='hzc-'+i;
+    card.style.cssText='background:white;border:2px solid #ffe082;border-radius:8px;padding:0.85rem;cursor:pointer;transition:all 0.2s;';
+    card.innerHTML='<div style="font-size:1.8rem;margin-bottom:0.4rem;">'+s.icon+'</div>'
+      +'<div style="font-size:0.85rem;color:#333;line-height:1.5;">'+s.label+'</div>';
+    card.addEventListener('click',function(){
+      selected[i]=!selected[i];
+      card.style.background=selected[i]?'#ffebee':'white';
+      card.style.borderColor=selected[i]?'#f44336':'#ffe082';
+    });
+    container.appendChild(card);
+  });
+
+  window.hzCheck=function(){
+    var correct=0;
+    situations.forEach(function(s,i){
+      var card=document.getElementById('hzc-'+i);
+      var picked=!!selected[i];
+      var right=picked===s.hazard;
+      if(right) correct++;
+      card.style.background=s.hazard?'#ffebee':'#e8f5e9';
+      card.style.borderColor=s.hazard?'#f44336':'#4caf50';
+      var existing=card.querySelector('.hz-explain');
+      if(!existing){
+        var exp=document.createElement('div');
+        exp.className='hz-explain';
+        exp.style.cssText='margin-top:0.5rem;font-size:0.78rem;padding:0.35rem 0.5rem;border-radius:4px;'
+          +(right?'background:#e8f5e9;color:#1b5e20;':'background:#fff3e0;color:#bf360c;');
+        exp.innerHTML=(right?'✅ ':'❌ ')+s.explain;
+        card.appendChild(exp);
+      }
+    });
+    var r=document.getElementById('hz-result');
+    r.style.display='block';
+    var pct=Math.round(correct/situations.length*100);
+    r.style.cssText='display:block;padding:0.75rem 1rem;border-radius:8px;font-size:0.9rem;font-weight:600;'
+      +(correct>=6?'background:#e8f5e9;border:1.5px solid #4caf50;color:#1b5e20;':'background:#fff3e0;border:1.5px solid #ffb74d;color:#e65100;');
+    r.textContent=correct+' / '+situations.length+' correct ('+pct+'%). '
+      +(correct===situations.length?'Excellent — you identified every hazard and safe action correctly!'
+        :'Review the highlighted cards above — the green cards are the safe actions, red are the hazards.');
+  };
+})();
+</script>
+```
 
 ---
 
