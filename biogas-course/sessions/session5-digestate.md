@@ -152,6 +152,78 @@ This means it acts faster than raw manure — but timely, correct application is
 | **Liquid bio-slurry** | Flows from digester outlet | Quick nutrient supply to established crops |
 | **Solid (fibre) digestate** | Settled solids | Soil structure improvement, distant fields |
 
+```{raw} html
+<div style="background:#f9fbe7;border:2px solid #dce775;border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:sans-serif;">
+  <h4 style="margin:0 0 0.2rem;color:#827717;font-size:1.05rem;">🔬 Bio-Slurry vs Raw Manure</h4>
+  <p style="margin:0 0 1.1rem;color:#555;font-size:0.85rem;">Click a property to compare — see why digested slurry outperforms raw manure as a fertiliser.</p>
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.2rem;">
+    <button onclick="bsComp(0)" id="bsc-btn-0" style="padding:0.4rem 0.85rem;border-radius:20px;border:2px solid #827717;background:#827717;color:white;font-size:0.82rem;font-weight:700;cursor:pointer;">🌿 N availability</button>
+    <button onclick="bsComp(1)" id="bsc-btn-1" style="padding:0.4rem 0.85rem;border-radius:20px;border:2px solid #bbb;background:white;color:#555;font-size:0.82rem;cursor:pointer;">🦠 Pathogens</button>
+    <button onclick="bsComp(2)" id="bsc-btn-2" style="padding:0.4rem 0.85rem;border-radius:20px;border:2px solid #bbb;background:white;color:#555;font-size:0.82rem;cursor:pointer;">💨 Odour</button>
+    <button onclick="bsComp(3)" id="bsc-btn-3" style="padding:0.4rem 0.85rem;border-radius:20px;border:2px solid #bbb;background:white;color:#555;font-size:0.82rem;cursor:pointer;">⚡ Speed of action</button>
+    <button onclick="bsComp(4)" id="bsc-btn-4" style="padding:0.4rem 0.85rem;border-radius:20px;border:2px solid #bbb;background:white;color:#555;font-size:0.82rem;cursor:pointer;">🌱 Soil health</button>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+    <div style="background:#fff8e1;border:1.5px solid #ffe082;border-radius:8px;padding:1rem;text-align:center;">
+      <div style="font-size:0.75rem;font-weight:700;color:#e65100;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.6rem;">Raw Manure</div>
+      <div style="background:#e0e0e0;border-radius:6px;height:20px;overflow:hidden;margin-bottom:0.4rem;">
+        <div id="bsc-bar-raw" style="height:100%;background:#ff8a65;border-radius:6px;transition:width 0.5s;width:30%;"></div>
+      </div>
+      <div id="bsc-val-raw" style="font-size:1.4rem;font-weight:900;color:#e65100;">30%</div>
+      <div id="bsc-label-raw" style="font-size:0.78rem;color:#bf360c;margin-top:0.3rem;">plant-available N</div>
+    </div>
+    <div style="background:#f1f8e9;border:1.5px solid #a5d6a7;border-radius:8px;padding:1rem;text-align:center;">
+      <div style="font-size:0.75rem;font-weight:700;color:#1b5e20;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.6rem;">Bio-Slurry</div>
+      <div style="background:#e0e0e0;border-radius:6px;height:20px;overflow:hidden;margin-bottom:0.4rem;">
+        <div id="bsc-bar-bio" style="height:100%;background:#66bb6a;border-radius:6px;transition:width 0.5s;width:70%;"></div>
+      </div>
+      <div id="bsc-val-bio" style="font-size:1.4rem;font-weight:900;color:#1b5e20;">70%</div>
+      <div id="bsc-label-bio" style="font-size:0.78rem;color:#2e7d32;margin-top:0.3rem;">plant-available N</div>
+    </div>
+  </div>
+  <div id="bsc-info" style="padding:0.75rem 1rem;border-radius:8px;font-size:0.875rem;background:#fffde7;border:1.5px solid #f9a825;color:#33691e;line-height:1.6;">
+    <strong>🌿 Nitrogen availability:</strong> Anaerobic digestion converts organic nitrogen into ammonium-N (NH₄-N) — the form plants absorb directly. Bio-slurry typically contains 44–81% of total N as ammonium-N, compared to around 15–30% in raw manure. This means faster, more predictable plant uptake.
+  </div>
+</div>
+<script>
+var bscData=[
+  {raw:30,bio:70,rLabel:'plant-available N',bLabel:'plant-available N',
+   info:'<strong>🌿 Nitrogen availability:</strong> Anaerobic digestion converts organic nitrogen into ammonium-N (NH₄-N) — the form plants absorb directly. Bio-slurry typically contains 44–81% of total N as ammonium-N, compared to around 15–30% in raw manure. This means faster, more predictable plant uptake.',
+   rVal:'~30%',bVal:'up to 81%',bg:'#fffde7',bc:'#f9a825',tc:'#33691e'},
+  {raw:80,bio:20,rLabel:'relative pathogen level',bLabel:'relative pathogen level',
+   info:'<strong>🦠 Pathogen reduction:</strong> The 40-day retention period and anaerobic conditions reduce harmful pathogens significantly. While not fully sterilised, bio-slurry is safer than fresh manure — especially for food crops. Always wash produce grown with bio-slurry.',
+   rVal:'HIGH','bVal':'reduced',bg:'#fce4ec',bc:'#ef9a9a',tc:'#b71c1c'},
+  {raw:85,bio:30,rLabel:'relative odour intensity',bLabel:'relative odour intensity',
+   info:'<strong>💨 Odour:</strong> Fresh manure has strong, volatile odour from undigested organic compounds. Bio-slurry is significantly less odorous — a practical benefit for field workers and neighbours.',
+   rVal:'strong',bVal:'mild',bg:'#e3f2fd',bc:'#90caf9',tc:'#0d47a1'},
+  {raw:25,bio:90,rLabel:'speed of N uptake by plants',bLabel:'speed of N uptake by plants',
+   info:'<strong>⚡ Speed of action:</strong> Because nitrogen is already in ammonium form, crops can use it within days of application. Raw manure must be further broken down by soil microbes first — a process that can take weeks, especially in cool or dry soils.',
+   rVal:'slow',bVal:'fast',bg:'#f3e5f5',bc:'#ce93d8',tc:'#6a1b9a'},
+  {raw:40,bio:80,rLabel:'long-term soil benefit',bLabel:'long-term soil benefit',
+   info:'<strong>🌱 Soil health:</strong> Bio-slurry improves soil structure, water retention, and microbial activity over time. Regular application builds organic matter. Some field studies report improved crop resistance to pests and disease, particularly on banana and rice crops.',
+   rVal:'moderate',bVal:'high',bg:'#e8f5e9',bc:'#a5d6a7',tc:'#1b5e20'},
+];
+function bsComp(i){
+  var d=bscData[i];
+  document.querySelectorAll('[id^="bsc-btn-"]').forEach(function(b,j){
+    b.style.background=j===i?'#827717':'white';
+    b.style.color=j===i?'white':'#555';
+    b.style.borderColor=j===i?'#827717':'#bbb';
+    b.style.fontWeight=j===i?'700':'400';
+  });
+  document.getElementById('bsc-bar-raw').style.width=d.raw+'%';
+  document.getElementById('bsc-bar-bio').style.width=d.bio+'%';
+  document.getElementById('bsc-val-raw').textContent=d.rVal;
+  document.getElementById('bsc-val-bio').textContent=d.bVal;
+  document.getElementById('bsc-label-raw').textContent=d.rLabel;
+  document.getElementById('bsc-label-bio').textContent=d.bLabel;
+  var info=document.getElementById('bsc-info');
+  info.style.background=d.bg;info.style.borderColor=d.bc;info.style.color=d.tc;
+  info.innerHTML=d.info;
+}
+</script>
+```
+
 ---
 
 ## Benefits of Bio-Slurry
