@@ -46,10 +46,12 @@ Airtightness is achieved two ways:
 A properly sealed digester retains all gas for cooking and productive use.
 ```
 
+Before a bag digester is filled with slurry it must be tested for leaks — even a small hole in the seam will let gas escape and waste your energy. In **Session 7 (Building)** you will go through the full installation process step by step; this simulation shows you the testing method so you already understand what good airtightness looks and feels like before you get there.
+
 ```{raw} html
 <div style="background:#e0f7fa;border:2px solid #80cbc4;border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:sans-serif;">
   <h4 style="margin:0 0 0.2rem;color:#006064;font-size:1.05rem;">🫧 Interactive: Airtightness Test Simulation</h4>
-  <p style="margin:0 0 1rem;color:#555;font-size:0.85rem;">A new bag has just been installed. Follow the steps to test it for leaks before commissioning.</p>
+  <p style="margin:0 0 1rem;color:#555;font-size:0.85rem;">A new bag has just been glued and is ready to install. Follow the steps below to test it for leaks <em>before</em> lowering it into the pit.</p>
 
   <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
     <div id="at2-s1" style="padding:0.35rem 0.85rem;border-radius:20px;font-size:0.8rem;font-weight:700;background:#00838f;color:white;">1. Close valve</div>

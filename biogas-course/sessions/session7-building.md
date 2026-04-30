@@ -140,7 +140,7 @@ Test the bag for leaks by inflating gently before installation. Any leaks must b
 ```
 
 ```{note}
-For a step-by-step interactive airtightness test simulation — including closing the valve, applying soapy water, and finding the leak — see [Session 1: Principles of Biogas](session1-principles.md).
+You practised this test back in **Session 1** — close the valve, inflate gently, brush soapy water over every seam, and watch for bubbles. If you want a reminder, the interactive simulation is in [Session 1: Principles of Biogas](session1-principles.md).
 ```
 
 
