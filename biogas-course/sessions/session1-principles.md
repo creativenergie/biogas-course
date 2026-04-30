@@ -74,9 +74,6 @@ A properly sealed digester retains all gas for cooking and productive use.
         </clipPath>
       </defs>
 
-      <!-- Soap trail (dots added by moveBrush) -->
-      <g id="at2-trail" clip-path="url(#at2-clip)" style="pointer-events:none;"></g>
-
       <!-- Bag body -->
       <ellipse id="at2-bag" cx="260" cy="150" rx="148" ry="92"
                fill="#b2dfdb" stroke="#00796b" stroke-width="2.5" clip-path="url(#at2-clip)"/>
@@ -85,6 +82,9 @@ A properly sealed digester retains all gas for cooking and productive use.
             stroke-dasharray="5,3" clip-path="url(#at2-clip)"/>
       <text x="260" y="143" text-anchor="middle" font-size="11" fill="#004d40" font-weight="700">GAS BAG</text>
       <text x="260" y="159" text-anchor="middle" font-size="9" fill="#00695c">expanding bag digester</text>
+
+      <!-- Soap trail (dots added by moveBrush — must be after bag so they render on top) -->
+      <g id="at2-trail" clip-path="url(#at2-clip)" style="pointer-events:none;"></g>
 
       <!-- Gas pipe -->
       <rect x="251" y="12" width="18" height="55" fill="#78909c" rx="3"/>
