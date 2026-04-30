@@ -46,6 +46,214 @@ Airtightness is achieved two ways:
 A properly sealed digester retains all gas for cooking and productive use.
 ```
 
+```{raw} html
+<div style="background:#e0f7fa;border:2px solid #80cbc4;border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:sans-serif;">
+  <h4 style="margin:0 0 0.2rem;color:#006064;font-size:1.05rem;">🫧 Interactive: Airtightness Test Simulation</h4>
+  <p style="margin:0 0 1rem;color:#555;font-size:0.85rem;">A new bag has just been installed. Follow the steps to test it for leaks before commissioning.</p>
+
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+    <div id="at2-s1" style="padding:0.35rem 0.85rem;border-radius:20px;font-size:0.8rem;font-weight:700;background:#00838f;color:white;">1. Close valve</div>
+    <div id="at2-s2" style="padding:0.35rem 0.85rem;border-radius:20px;font-size:0.8rem;font-weight:400;background:#e0e0e0;color:#888;">2. Apply soapy water</div>
+    <div id="at2-s3" style="padding:0.35rem 0.85rem;border-radius:20px;font-size:0.8rem;font-weight:400;background:#e0e0e0;color:#888;">3. Find &amp; mark the leak</div>
+  </div>
+
+  <div style="max-width:540px;margin:0 auto;position:relative;">
+    <svg id="at2-svg" viewBox="0 0 520 230" style="width:100%;display:block;border-radius:8px;cursor:crosshair;"
+         onmousemove="at2Move(event)" onclick="at2Click(event)"
+         ontouchmove="at2Touch(event)" ontouchstart="at2Touch(event)">
+      <!-- Sky -->
+      <rect width="520" height="172" fill="#b3e5fc"/>
+      <!-- Ground -->
+      <rect y="172" width="520" height="58" fill="#c8e6c9"/>
+      <line x1="0" y1="172" x2="520" y2="172" stroke="#4caf50" stroke-width="2"/>
+
+      <!-- Clip: only show bag above ground -->
+      <defs>
+        <clipPath id="at2-clip">
+          <rect x="0" y="0" width="520" height="173"/>
+        </clipPath>
+      </defs>
+
+      <!-- Bag body -->
+      <ellipse id="at2-bag" cx="260" cy="150" rx="148" ry="92"
+               fill="#b2dfdb" stroke="#00796b" stroke-width="2.5" clip-path="url(#at2-clip)"/>
+      <!-- Seam -->
+      <line x1="112" y1="150" x2="408" y2="150" stroke="#00695c" stroke-width="1"
+            stroke-dasharray="5,3" clip-path="url(#at2-clip)"/>
+      <text x="260" y="143" text-anchor="middle" font-size="11" fill="#004d40" font-weight="700">GAS BAG</text>
+      <text x="260" y="159" text-anchor="middle" font-size="9" fill="#00695c">expanding bag digester</text>
+
+      <!-- Gas pipe -->
+      <rect x="251" y="12" width="18" height="55" fill="#78909c" rx="3"/>
+
+      <!-- Gas valve (clickable) -->
+      <g id="at2-valve" onclick="at2ValveClick(event)" style="cursor:pointer;">
+        <rect x="236" y="8" width="48" height="26" rx="5" fill="#f44336" stroke="#b71c1c" stroke-width="2"/>
+        <text x="260" y="23" text-anchor="middle" font-size="9" fill="white" font-weight="700">VALVE</text>
+        <text id="at2-vstate" x="260" y="31" text-anchor="middle" font-size="7.5" fill="#ff8a80">● OPEN</text>
+      </g>
+
+      <!-- Inlet -->
+      <rect x="86" y="142" width="28" height="32" rx="3" fill="#78909c"/>
+      <text x="100" y="161" text-anchor="middle" font-size="7.5" fill="white" font-weight="bold">IN</text>
+      <!-- Outlet -->
+      <rect x="406" y="142" width="28" height="32" rx="3" fill="#78909c"/>
+      <text x="420" y="161" text-anchor="middle" font-size="7.5" fill="white" font-weight="bold">OUT</text>
+
+      <!-- Stress mark at leak (revealed when found) -->
+      <line id="at2-crack" x1="370" y1="90" x2="382" y2="82" stroke="#ef9a9a"
+            stroke-width="3" stroke-linecap="round" opacity="0"/>
+
+      <!-- Soap brush cursor -->
+      <circle id="at2-brush" cx="-60" cy="-60" r="18" fill="rgba(224,247,250,0.55)"
+              stroke="#0097a7" stroke-width="1.5" opacity="0" style="pointer-events:none;"/>
+      <text id="at2-brush-icon" x="-60" y="-53" text-anchor="middle" font-size="15"
+            opacity="0" style="pointer-events:none;">🧼</text>
+
+      <!-- Bubbles at leak -->
+      <g id="at2-bubbles" opacity="0" style="pointer-events:none;">
+        <circle cx="376" cy="86" r="9" fill="rgba(255,235,238,0.75)" stroke="#e53935" stroke-width="1.5">
+          <animate attributeName="r" values="9;14;9" dur="0.7s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="391" cy="78" r="5" fill="rgba(255,235,238,0.6)" stroke="#e53935" stroke-width="1">
+          <animate attributeName="r" values="5;9;5" dur="0.9s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="362" cy="79" r="4" fill="rgba(255,235,238,0.6)" stroke="#e53935" stroke-width="1">
+          <animate attributeName="r" values="4;7;4" dur="1.1s" repeatCount="indefinite"/>
+        </circle>
+        <text x="376" y="69" text-anchor="middle" font-size="9" fill="#b71c1c" font-weight="700">BUBBLES!</text>
+      </g>
+
+      <!-- Wrong-click flash -->
+      <rect id="at2-flash" x="0" y="0" width="520" height="230" fill="rgba(220,50,50,0.35)"
+            opacity="0" style="pointer-events:none;"/>
+    </svg>
+  </div>
+
+  <div id="at2-status" style="margin-top:0.85rem;padding:0.75rem 1rem;border-radius:8px;
+       font-size:0.875rem;font-weight:600;background:#e0f7fa;border:1.5px solid #80cbc4;
+       color:#006064;line-height:1.5;">
+    Step 1 — Click the <strong>red VALVE</strong> to close it before inflating the bag.
+  </div>
+  <div id="at2-soap-wrap" style="display:none;margin-top:0.75rem;">
+    <button onclick="at2Soap()"
+            style="background:#0097a7;color:white;border:none;padding:0.5rem 1.3rem;
+                   border-radius:7px;font-size:0.875rem;font-weight:700;cursor:pointer;">
+      🧼 Apply Soapy Water →
+    </button>
+  </div>
+  <div id="at2-reset-wrap" style="display:none;margin-top:0.75rem;">
+    <button onclick="at2Reset()"
+            style="background:#e53935;color:white;border:none;padding:0.5rem 1.3rem;
+                   border-radius:7px;font-size:0.875rem;font-weight:700;cursor:pointer;">
+      ↺ Start Again
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  var step=1, soapOn=false;
+  var LX=376, LY=86, LR=32;
+  var svg=document.getElementById('at2-svg');
+
+  function svgPt(e){
+    var r=svg.getBoundingClientRect();
+    var sx=520/r.width, sy=230/r.height;
+    var src=e.touches?e.touches[0]:e;
+    return {x:(src.clientX-r.left)*sx, y:(src.clientY-r.top)*sy};
+  }
+
+  function status(msg,bg,bc,tc){
+    var el=document.getElementById('at2-status');
+    el.style.background=bg; el.style.borderColor=bc; el.style.color=tc;
+    el.innerHTML=msg;
+  }
+
+  function stepStyle(n){
+    [1,2,3].forEach(function(i){
+      var el=document.getElementById('at2-s'+i);
+      if(i<n){el.style.background='#2e7d32';el.style.color='white';el.style.fontWeight='700';}
+      else if(i===n){el.style.background='#00838f';el.style.color='white';el.style.fontWeight='700';}
+      else{el.style.background='#e0e0e0';el.style.color='#888';el.style.fontWeight='400';}
+    });
+  }
+
+  window.at2ValveClick=function(e){
+    e.stopPropagation();
+    if(step!==1) return;
+    document.getElementById('at2-valve').querySelector('rect').setAttribute('fill','#2e7d32');
+    document.getElementById('at2-valve').querySelector('rect').setAttribute('stroke','#1b5e20');
+    document.getElementById('at2-vstate').textContent='● CLOSED';
+    document.getElementById('at2-vstate').setAttribute('fill','#a5d6a7');
+    step=2; stepStyle(2);
+    status('✅ Valve closed. Inflate the bag slightly, then click <strong>Apply Soapy Water</strong>.','#e8f5e9','#a5d6a7','#1b5e20');
+    document.getElementById('at2-soap-wrap').style.display='block';
+  };
+
+  window.at2Soap=function(){
+    if(step!==2) return;
+    step=3; soapOn=true; stepStyle(3);
+    document.getElementById('at2-soap-wrap').style.display='none';
+    document.getElementById('at2-brush').setAttribute('opacity','1');
+    document.getElementById('at2-brush-icon').setAttribute('opacity','1');
+    svg.style.cursor='none';
+    status('🧼 Move the soap over the bag surface — watch for <strong>bubbles</strong>, then click on them.','#e0f7fa','#0097a7','#006064');
+  };
+
+  function moveBrush(p){
+    document.getElementById('at2-brush').setAttribute('cx',p.x);
+    document.getElementById('at2-brush').setAttribute('cy',p.y);
+    document.getElementById('at2-brush-icon').setAttribute('x',p.x);
+    document.getElementById('at2-brush-icon').setAttribute('y',p.y+5);
+    var d=Math.sqrt(Math.pow(p.x-LX,2)+Math.pow(p.y-LY,2));
+    document.getElementById('at2-bubbles').setAttribute('opacity',d<LR?'1':'0');
+  }
+
+  window.at2Move=function(e){ if(soapOn&&step===3) moveBrush(svgPt(e)); };
+  window.at2Touch=function(e){ if(soapOn&&step===3){e.preventDefault();moveBrush(svgPt(e));} };
+
+  window.at2Click=function(e){
+    if(step!==3||!soapOn) return;
+    var p=svgPt(e);
+    var onBag=Math.pow((p.x-260)/148,2)+Math.pow((p.y-150)/92,2)<=1&&p.y<172;
+    if(!onBag) return;
+    var d=Math.sqrt(Math.pow(p.x-LX,2)+Math.pow(p.y-LY,2));
+    if(d<LR+12){
+      // Correct!
+      step=4; soapOn=false; svg.style.cursor='default';
+      [1,2,3].forEach(function(i){var el=document.getElementById('at2-s'+i);el.style.background='#2e7d32';el.style.color='white';});
+      document.getElementById('at2-brush').setAttribute('opacity','0');
+      document.getElementById('at2-brush-icon').setAttribute('opacity','0');
+      document.getElementById('at2-bubbles').setAttribute('opacity','1');
+      document.getElementById('at2-crack').setAttribute('opacity','1');
+      status('🎉 <strong>Leak found and marked!</strong> Dry the area, apply PVC sealant or glue, allow to cure fully, then re-inflate and re-test before installation.','#e8f5e9','#4caf50','#1b5e20');
+      document.getElementById('at2-reset-wrap').style.display='block';
+    } else {
+      // Wrong — flash red and reset
+      var f=document.getElementById('at2-flash');
+      f.setAttribute('opacity','0.4');
+      status('❌ Those are not bubbles — keep moving the soap. Any bubbles means a leak. Starting again…','#ffebee','#ef9a9a','#b71c1c');
+      setTimeout(function(){f.setAttribute('opacity','0');at2Reset();},1800);
+    }
+  };
+
+  window.at2Reset=function(){
+    step=1; soapOn=false; svg.style.cursor='crosshair'; stepStyle(1);
+    document.getElementById('at2-valve').querySelector('rect').setAttribute('fill','#f44336');
+    document.getElementById('at2-valve').querySelector('rect').setAttribute('stroke','#b71c1c');
+    document.getElementById('at2-vstate').textContent='● OPEN';
+    document.getElementById('at2-vstate').setAttribute('fill','#ff8a80');
+    ['at2-brush','at2-brush-icon','at2-bubbles','at2-crack'].forEach(function(id){
+      document.getElementById(id).setAttribute('opacity','0');
+    });
+    document.getElementById('at2-soap-wrap').style.display='none';
+    document.getElementById('at2-reset-wrap').style.display='none';
+    status('Step 1 — Click the <strong>red VALVE</strong> to close it before inflating the bag.','#e0f7fa','#80cbc4','#006064');
+  };
+})();
+</script>
+```
+
 ---
 
 ### 2. Temperature Control
