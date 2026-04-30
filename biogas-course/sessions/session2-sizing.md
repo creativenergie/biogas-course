@@ -196,63 +196,140 @@ Cross-section diagram of the CE Expanding Bag Digester showing slurry volume (Vs
 ```
 
 ```{raw} html
-<div style="background:#f8fffe;border:2px solid #c8e6c9;border-radius:10px;padding:1.25rem;margin:1.25rem 0;">
-  <h4 style="margin:0 0 0.4rem;color:#1b5e20;font-size:1rem;">📐 Digester Sizing Calculator</h4>
-  <p style="margin:0 0 1rem;color:#555;font-size:0.875rem;">Enter your farm details to calculate the recommended digester size.</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem;margin-bottom:1rem;">
-    <div>
-      <label style="font-weight:600;font-size:0.875rem;display:block;margin-bottom:0.3rem;">Daily dung input (kg)</label>
-      <input type="number" id="sc-dung" value="20" min="1" max="500" step="1"
-             style="width:100%;padding:0.45rem 0.6rem;border:1.5px solid #c8e6c9;border-radius:6px;font-size:0.95rem;box-sizing:border-box;"/>
+<div style="background:#f1f8e9;border:2px solid #a5d6a7;border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:sans-serif;">
+  <h4 style="margin:0 0 0.2rem;color:#1b5e20;font-size:1.05rem;">🧮 Interactive Sizing — Steps 3, 4 &amp; 5</h4>
+  <p style="margin:0 0 1.2rem;color:#555;font-size:0.85rem;">Adjust the sliders to see how Vs, Vg and total digester volume change in real time.</p>
+
+  <!-- Inputs -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0.9rem;margin-bottom:1.2rem;">
+    <div style="background:white;border:1.5px solid #c8e6c9;border-radius:8px;padding:0.85rem;">
+      <div style="font-size:0.8rem;font-weight:700;color:#1b5e20;margin-bottom:0.4rem;">🐄 Daily dung input</div>
+      <input type="range" id="dv-dung" min="5" max="200" value="20" step="5" oninput="dvCalc()" style="width:100%;margin:0.2rem 0;">
+      <div style="text-align:right;font-weight:700;color:#1b5e20;font-size:0.9rem;"><span id="dv-dung-val">20</span> kg/day</div>
     </div>
-    <div>
-      <label style="font-weight:600;font-size:0.875rem;display:block;margin-bottom:0.3rem;">Water ratio (parts per part dung)</label>
-      <input type="number" id="sc-water" value="1" min="0.5" max="3" step="0.5"
-             style="width:100%;padding:0.45rem 0.6rem;border:1.5px solid #c8e6c9;border-radius:6px;font-size:0.95rem;box-sizing:border-box;"/>
+    <div style="background:white;border:1.5px solid #c8e6c9;border-radius:8px;padding:0.85rem;">
+      <div style="font-size:0.8rem;font-weight:700;color:#1b5e20;margin-bottom:0.4rem;">💧 Water ratio</div>
+      <input type="range" id="dv-water" min="0.5" max="2" value="1" step="0.5" oninput="dvCalc()" style="width:100%;margin:0.2rem 0;">
+      <div style="text-align:right;font-weight:700;color:#1b5e20;font-size:0.9rem;"><span id="dv-water-val">1</span> part water : 1 part dung</div>
     </div>
-    <div>
-      <label style="font-weight:600;font-size:0.875rem;display:block;margin-bottom:0.3rem;">Retention time (days)</label>
-      <input type="number" id="sc-rt" value="40" min="20" max="95" step="1"
-             style="width:100%;padding:0.45rem 0.6rem;border:1.5px solid #c8e6c9;border-radius:6px;font-size:0.95rem;box-sizing:border-box;"/>
+    <div style="background:white;border:1.5px solid #c8e6c9;border-radius:8px;padding:0.85rem;">
+      <div style="font-size:0.8rem;font-weight:700;color:#1b5e20;margin-bottom:0.4rem;">⏱ Retention time</div>
+      <input type="range" id="dv-rt" min="20" max="60" value="40" step="5" oninput="dvCalc()" style="width:100%;margin:0.2rem 0;">
+      <div style="text-align:right;font-weight:700;color:#1b5e20;font-size:0.9rem;"><span id="dv-rt-val">40</span> days</div>
     </div>
   </div>
-  <button onclick="calcDigester()"
-          style="background:#2e7d32;color:#fff;border:none;padding:0.55rem 1.4rem;border-radius:7px;font-size:0.95rem;font-weight:700;cursor:pointer;margin-bottom:1rem;">
-    Calculate
-  </button>
-  <div id="sc-result" style="display:none;padding:1rem;background:#fff;border:1.5px solid #a5d6a7;border-radius:8px;"></div>
+
+  <!-- Steps 3 & 4 cards -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.9rem;margin-bottom:1.2rem;">
+    <div style="background:#e3f2fd;border:1.5px solid #90caf9;border-radius:8px;padding:1rem;">
+      <div style="font-size:0.75rem;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem;">Step 3 — Slurry Volume (Vs)</div>
+      <table style="font-size:0.82rem;width:100%;border-collapse:collapse;color:#333;line-height:1.8;">
+        <tr><td>Dung + water</td><td style="text-align:right;"><span id="dv-s3-dung">20</span> + <span id="dv-s3-water-kg">20</span> kg</td></tr>
+        <tr><td>Daily slurry</td><td style="text-align:right;"><span id="dv-s3-slurry-kg">40</span> kg = <span id="dv-s3-slurry-m3">0.040</span> m³</td></tr>
+        <tr><td>× retention time</td><td style="text-align:right;">× <span id="dv-s3-rt">40</span> days</td></tr>
+      </table>
+      <div style="font-size:1.15rem;font-weight:900;color:#1565c0;margin-top:0.5rem;border-top:2px solid #90caf9;padding-top:0.4rem;">Vs = <span id="dv-vs-result">1.60</span> m³</div>
+    </div>
+    <div style="background:#f3e5f5;border:1.5px solid #ce93d8;border-radius:8px;padding:1rem;">
+      <div style="font-size:0.75rem;font-weight:700;color:#6a1b9a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem;">Step 4 — Gas Volume (Vg)</div>
+      <table style="font-size:0.82rem;width:100%;border-collapse:collapse;color:#333;line-height:1.8;">
+        <tr><td>Formula</td><td style="text-align:right;">0.04 m³ × kg/day</td></tr>
+        <tr><td>Daily dung</td><td style="text-align:right;"><span id="dv-s4-dung">20</span> kg/day</td></tr>
+        <tr><td>Gas storage</td><td style="text-align:right;">~1 day's production</td></tr>
+      </table>
+      <div style="font-size:1.15rem;font-weight:900;color:#6a1b9a;margin-top:0.5rem;border-top:2px solid #ce93d8;padding-top:0.4rem;">Vg = <span id="dv-vg-result">0.80</span> m³</div>
+    </div>
+  </div>
+
+  <!-- Step 5: visual digester -->
+  <div style="background:white;border:1.5px solid #a5d6a7;border-radius:8px;padding:1rem;margin-bottom:0.9rem;">
+    <div style="font-size:0.75rem;font-weight:700;color:#1b5e20;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.9rem;">Step 5 — Total Volume = Vs + Vg</div>
+    <div style="display:flex;align-items:flex-start;gap:1.2rem;flex-wrap:wrap;">
+      <svg viewBox="0 0 110 185" width="100" height="175" style="flex:0 0 100px;display:block;">
+        <defs>
+          <clipPath id="dv-digester-clip">
+            <rect x="15" y="15" width="80" height="150" rx="12" ry="12"/>
+          </clipPath>
+        </defs>
+        <rect x="15" y="15" width="80" height="150" rx="12" ry="12" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="2"/>
+        <rect id="dv-fill-vs" x="15" y="65" width="80" height="100" fill="#64b5f6" clip-path="url(#dv-digester-clip)"/>
+        <rect id="dv-fill-vg" x="15" y="15" width="80" height="50" fill="#aed581" clip-path="url(#dv-digester-clip)"/>
+        <line id="dv-divide-line" x1="15" y1="65" x2="95" y2="65" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
+        <text id="dv-label-vg" x="55" y="42" text-anchor="middle" font-size="11" font-weight="bold" fill="#2e7d32">Vg</text>
+        <text id="dv-label-vs" x="55" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#0d47a1">Vs</text>
+        <text x="55" y="9" text-anchor="middle" font-size="8" fill="#888">gas ↑</text>
+        <text x="55" y="178" text-anchor="middle" font-size="8" fill="#888">↓ slurry</text>
+      </svg>
+      <div style="flex:1;min-width:150px;">
+        <div style="font-size:0.88rem;line-height:2.2;color:#333;">
+          <div><span style="display:inline-block;width:13px;height:13px;background:#aed581;border-radius:3px;vertical-align:middle;margin-right:5px;"></span>Vg (gas) = <strong style="color:#1b5e20;font-size:1rem;"><span id="dv-total-vg">0.80</span> m³</strong></div>
+          <div><span style="display:inline-block;width:13px;height:13px;background:#64b5f6;border-radius:3px;vertical-align:middle;margin-right:5px;"></span>Vs (slurry) = <strong style="color:#1565c0;font-size:1rem;"><span id="dv-total-vs">1.60</span> m³</strong></div>
+          <div style="border-top:2px solid #e0e0e0;margin:0.3rem 0 0.4rem;"></div>
+          <div><strong style="font-size:1.25rem;color:#1b5e20;">Total = <span id="dv-total-result">2.40</span> m³</strong></div>
+        </div>
+        <div style="margin-top:1rem;">
+          <div style="font-size:0.75rem;color:#888;margin-bottom:0.25rem;">Volume split: <span id="dv-vg-pct">33</span>% gas · <span id="dv-vs-pct">67</span>% slurry</div>
+          <div style="height:16px;border-radius:6px;overflow:hidden;display:flex;background:#eee;">
+            <div id="dv-bar-vg" style="background:#aed581;transition:width 0.3s;width:33%;"></div>
+            <div id="dv-bar-vs" style="background:#64b5f6;transition:width 0.3s;width:67%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendation -->
+  <div id="dv-rec" style="background:#e8f5e9;border:1.5px solid #4caf50;border-radius:8px;padding:0.75rem 1rem;font-size:0.9rem;"></div>
 </div>
 <script>
-function calcDigester(){
-  var dung=parseFloat(document.getElementById('sc-dung').value)||0;
-  var water=parseFloat(document.getElementById('sc-water').value)||1;
-  var rt=parseFloat(document.getElementById('sc-rt').value)||40;
-  if(dung<=0){alert('Please enter a valid dung amount.');return;}
-  var dailySlurry=(dung*(1+water))/1000; // m³/day (1 kg ≈ 1 litre ≈ 0.001 m³)
-  var Vs=dailySlurry*rt;
+function dvCalc(){
+  var dung=parseInt(document.getElementById('dv-dung').value)||20;
+  var water=parseFloat(document.getElementById('dv-water').value)||1;
+  var rt=parseInt(document.getElementById('dv-rt').value)||40;
+  document.getElementById('dv-dung-val').textContent=dung;
+  document.getElementById('dv-water-val').textContent=water%1===0?water:water.toFixed(1);
+  document.getElementById('dv-rt-val').textContent=rt;
+  var waterKg=Math.round(dung*water);
+  var slurryKg=dung+waterKg;
+  var slurryM3=slurryKg/1000;
+  var Vs=slurryM3*rt;
   var Vg=0.04*dung;
   var total=Vs+Vg;
+  var vsPct=Math.round(Vs/total*100);
+  var vgPct=100-vsPct;
+  document.getElementById('dv-s3-dung').textContent=dung;
+  document.getElementById('dv-s3-water-kg').textContent=waterKg;
+  document.getElementById('dv-s3-slurry-kg').textContent=slurryKg;
+  document.getElementById('dv-s3-slurry-m3').textContent=slurryM3.toFixed(3);
+  document.getElementById('dv-s3-rt').textContent=rt;
+  document.getElementById('dv-vs-result').textContent=Vs.toFixed(2);
+  document.getElementById('dv-s4-dung').textContent=dung;
+  document.getElementById('dv-vg-result').textContent=Vg.toFixed(2);
+  document.getElementById('dv-total-vs').textContent=Vs.toFixed(2);
+  document.getElementById('dv-total-vg').textContent=Vg.toFixed(2);
+  document.getElementById('dv-total-result').textContent=total.toFixed(2);
+  document.getElementById('dv-vs-pct').textContent=vsPct;
+  document.getElementById('dv-vg-pct').textContent=vgPct;
+  document.getElementById('dv-bar-vs').style.width=vsPct+'%';
+  document.getElementById('dv-bar-vg').style.width=vgPct+'%';
+  var H=150,top=15,base=165;
+  var slurryH=Math.max(Math.round(H*vsPct/100),15);
+  var gasH=H-slurryH;
+  document.getElementById('dv-fill-vs').setAttribute('y',base-slurryH);
+  document.getElementById('dv-fill-vs').setAttribute('height',slurryH);
+  document.getElementById('dv-fill-vg').setAttribute('y',top);
+  document.getElementById('dv-fill-vg').setAttribute('height',gasH);
+  document.getElementById('dv-divide-line').setAttribute('y1',base-slurryH);
+  document.getElementById('dv-divide-line').setAttribute('y2',base-slurryH);
+  document.getElementById('dv-label-vg').setAttribute('y',top+gasH/2+4);
+  document.getElementById('dv-label-vs').setAttribute('y',base-slurryH/2+4);
   var size,note;
-  if(total<=2.5){size='5 m³ (Five-Cow) digester';note='Suitable for cooking on one stove twice daily.';}
-  else if(total<=5){size='8 m³ (Eight-Cow) digester';note='Suitable for cooking plus some lighting or brooding.';}
-  else{size='13 m³ (Twenty-Cow) digester';note='Large installation — suitable for cooking, water heating and productive use.';}
-  var r=document.getElementById('sc-result');
-  r.style.display='block';
-  r.innerHTML=
-    '<table style="width:100%;border-collapse:collapse;font-size:0.875rem;margin-bottom:0.75rem;">'+
-    '<tr><td style="padding:0.3rem 0.5rem;border-bottom:1px solid #e8f5e9;color:#555;">Daily slurry input</td>'+
-    '<td style="padding:0.3rem 0.5rem;border-bottom:1px solid #e8f5e9;font-weight:700;text-align:right;">'+dailySlurry.toFixed(4)+' m³/day</td></tr>'+
-    '<tr><td style="padding:0.3rem 0.5rem;border-bottom:1px solid #e8f5e9;color:#555;">Slurry volume (Vs = input × RT)</td>'+
-    '<td style="padding:0.3rem 0.5rem;border-bottom:1px solid #e8f5e9;font-weight:700;text-align:right;">'+Vs.toFixed(2)+' m³</td></tr>'+
-    '<tr><td style="padding:0.3rem 0.5rem;border-bottom:1px solid #e8f5e9;color:#555;">Gas volume (Vg = 0.04 × dung kg)</td>'+
-    '<td style="padding:0.3rem 0.5rem;border-bottom:1px solid #e8f5e9;font-weight:700;text-align:right;">'+Vg.toFixed(2)+' m³</td></tr>'+
-    '<tr><td style="padding:0.3rem 0.5rem;color:#555;font-weight:700;">Total volume needed (Vs + Vg)</td>'+
-    '<td style="padding:0.3rem 0.5rem;font-weight:700;color:#1b5e20;font-size:1rem;text-align:right;">'+total.toFixed(2)+' m³</td></tr>'+
-    '</table>'+
-    '<div style="background:#e8f5e9;border:1.5px solid #4caf50;border-radius:7px;padding:0.65rem 0.9rem;">'+
-    '<strong style="color:#1b5e20;">✅ Recommended: '+size+'</strong><br>'+
-    '<span style="color:#2e7d32;font-size:0.85rem;">'+note+'</span></div>';
+  if(total<=2.5){size='5 m³ (Five-Cow)';note='Suitable for cooking on one stove twice daily.';}
+  else if(total<=5){size='8 m³ (Eight-Cow)';note='Suitable for cooking plus some lighting or brooding.';}
+  else{size='13 m³ (Twenty-Cow)';note='Large installation — cooking, water heating and productive use.';}
+  document.getElementById('dv-rec').innerHTML='<strong style="color:#1b5e20;font-size:1rem;">&#x2705; Recommended: '+size+' digester</strong><br><span style="color:#2e7d32;font-size:0.85rem;">'+note+'</span>';
 }
+dvCalc();
 </script>
 ```
 

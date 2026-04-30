@@ -315,7 +315,7 @@ Bio-slurry forms and how to use them: liquid and solid bio-slurry, building comp
     </div>
     <div>
       <label style="display:block;font-size:0.8rem;font-weight:700;color:#827717;margin-bottom:0.3rem;">Method</label>
-      <select id="bs-method" style="padding:0.4rem 0.6rem;border:1px solid #dce775;border-radius:6px;font-size:0.85rem;background:white;">
+      <select id="bs-calc-method" style="padding:0.4rem 0.6rem;border:1px solid #dce775;border-radius:6px;font-size:0.85rem;background:white;">
         <option value="1">Method 1 — Direct (1:1, established crops)</option>
         <option value="2">Method 2 — Watering can (1:3, seedlings)</option>
       </select>
@@ -327,7 +327,7 @@ Bio-slurry forms and how to use them: liquid and solid bio-slurry, building comp
 <script>
 function bsCalc(){
   var area=parseFloat(document.getElementById('bs-area').value)||100;
-  var method=document.getElementById('bs-method').value;
+  var method=document.getElementById('bs-calc-method').value;
   var res=document.getElementById('bs-result');
   var slurry,water,total,perPlant,note;
   if(method==='1'){

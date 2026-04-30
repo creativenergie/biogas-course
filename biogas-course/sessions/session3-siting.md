@@ -129,42 +129,42 @@ Like seeds in the parable, technology will only flourish where it falls on ferti
   <p style="margin:0 0 1rem;font-size:0.875rem;color:#555;">Answer all six questions about your proposed site to get a suitability score.</p>
   <div id="sa-questions" style="display:grid;gap:0.55rem;">
     <div class="sa-q" style="background:#f5f5f5;border-radius:7px;padding:0.65rem 0.9rem;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
-      <span style="font-size:0.875rem;">Is the site at least <strong>10 m from any water source</strong> (well, borehole, stream)?</span>
+      <span style="font-size:0.875rem;color:#222;">Is the site at least <strong>10 m from any water source</strong> (well, borehole, stream)?</span>
       <div style="display:flex;gap:0.4rem;flex-shrink:0;">
         <button class="sa-btn" onclick="saSet(this,1,1)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">Yes</button>
         <button class="sa-btn" onclick="saSet(this,1,0)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">No</button>
       </div>
     </div>
     <div class="sa-q" style="background:#f5f5f5;border-radius:7px;padding:0.65rem 0.9rem;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
-      <span style="font-size:0.875rem;">Is it at least <strong>3 m from any building</strong>?</span>
+      <span style="font-size:0.875rem;color:#222;">Is it at least <strong>3 m from any building</strong>?</span>
       <div style="display:flex;gap:0.4rem;flex-shrink:0;">
         <button class="sa-btn" onclick="saSet(this,2,1)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">Yes</button>
         <button class="sa-btn" onclick="saSet(this,2,0)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">No</button>
       </div>
     </div>
     <div class="sa-q" style="background:#f5f5f5;border-radius:7px;padding:0.65rem 0.9rem;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
-      <span style="font-size:0.875rem;">Is it <strong>within 20 m of the animal pen</strong> (feedstock source)?</span>
+      <span style="font-size:0.875rem;color:#222;">Is it <strong>within 20 m of the animal pen</strong> (feedstock source)?</span>
       <div style="display:flex;gap:0.4rem;flex-shrink:0;">
         <button class="sa-btn" onclick="saSet(this,3,1)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">Yes</button>
         <button class="sa-btn" onclick="saSet(this,3,0)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">No</button>
       </div>
     </div>
     <div class="sa-q" style="background:#f5f5f5;border-radius:7px;padding:0.65rem 0.9rem;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
-      <span style="font-size:0.875rem;">Is it <strong>within 20 m of the kitchen</strong>?</span>
+      <span style="font-size:0.875rem;color:#222;">Is it <strong>within 20 m of the kitchen</strong>?</span>
       <div style="display:flex;gap:0.4rem;flex-shrink:0;">
         <button class="sa-btn" onclick="saSet(this,4,1)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">Yes</button>
         <button class="sa-btn" onclick="saSet(this,4,0)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">No</button>
       </div>
     </div>
     <div class="sa-q" style="background:#f5f5f5;border-radius:7px;padding:0.65rem 0.9rem;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
-      <span style="font-size:0.875rem;">Is the ground <strong>free of large rocks and tree roots</strong>?</span>
+      <span style="font-size:0.875rem;color:#222;">Is the ground <strong>free of large rocks and tree roots</strong>?</span>
       <div style="display:flex;gap:0.4rem;flex-shrink:0;">
         <button class="sa-btn" onclick="saSet(this,5,1)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">Yes</button>
         <button class="sa-btn" onclick="saSet(this,5,0)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">No</button>
       </div>
     </div>
     <div class="sa-q" style="background:#f5f5f5;border-radius:7px;padding:0.65rem 0.9rem;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
-      <span style="font-size:0.875rem;">Is the site <strong>sunny and well-ventilated</strong> (not heavily shaded by trees)?</span>
+      <span style="font-size:0.875rem;color:#222;">Is the site <strong>sunny and well-ventilated</strong> (not heavily shaded by trees)?</span>
       <div style="display:flex;gap:0.4rem;flex-shrink:0;">
         <button class="sa-btn" onclick="saSet(this,6,1)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">Yes</button>
         <button class="sa-btn" onclick="saSet(this,6,0)" style="padding:0.3rem 0.8rem;border:1.5px solid #bbb;border-radius:5px;background:white;cursor:pointer;font-size:0.85rem;">No</button>
