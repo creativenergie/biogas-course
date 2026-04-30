@@ -74,6 +74,9 @@ A properly sealed digester retains all gas for cooking and productive use.
         </clipPath>
       </defs>
 
+      <!-- Soap trail (dots added by moveBrush) -->
+      <g id="at2-trail" clip-path="url(#at2-clip)" style="pointer-events:none;"></g>
+
       <!-- Bag body -->
       <ellipse id="at2-bag" cx="260" cy="150" rx="148" ry="92"
                fill="#b2dfdb" stroke="#00796b" stroke-width="2.5" clip-path="url(#at2-clip)"/>
@@ -88,9 +91,14 @@ A properly sealed digester retains all gas for cooking and productive use.
 
       <!-- Gas valve (clickable) -->
       <g id="at2-valve" onclick="at2ValveClick(event)" style="cursor:pointer;">
-        <rect x="236" y="8" width="48" height="26" rx="5" fill="#f44336" stroke="#b71c1c" stroke-width="2"/>
+        <rect id="at2-pulse" x="229" y="1" width="62" height="40" rx="9" fill="none" stroke="#f44336" stroke-width="4"/>
+        <rect id="at2-vbody" x="236" y="8" width="48" height="26" rx="5" fill="#f44336" stroke="#b71c1c" stroke-width="2"/>
         <text x="260" y="23" text-anchor="middle" font-size="9" fill="white" font-weight="700">VALVE</text>
         <text id="at2-vstate" x="260" y="31" text-anchor="middle" font-size="7.5" fill="#ff8a80">● OPEN</text>
+      </g>
+      <!-- Valve click hint (hidden after valve closed) -->
+      <g id="at2-valve-hint" style="pointer-events:none;">
+        <text x="260" y="52" text-anchor="middle" font-size="9" fill="#c62828" font-weight="700">▲ click to close</text>
       </g>
 
       <!-- Inlet -->
@@ -150,10 +158,17 @@ A properly sealed digester retains all gas for cooking and productive use.
     </button>
   </div>
 </div>
+<style>
+@keyframes at2pr{0%,100%{opacity:.8}50%{opacity:.1}}
+@keyframes at2hb{0%,100%{opacity:1}50%{opacity:.2}}
+#at2-pulse{animation:at2pr 1s ease-in-out infinite}
+#at2-valve-hint{animation:at2hb 1s ease-in-out infinite}
+</style>
 <script>
 (function(){
   var step=1, soapOn=false;
   var LX=376, LY=86, LR=32;
+  var _ltx=-999, _lty=-999;
   var svg=document.getElementById('at2-svg');
 
   function svgPt(e){
@@ -181,8 +196,10 @@ A properly sealed digester retains all gas for cooking and productive use.
   window.at2ValveClick=function(e){
     e.stopPropagation();
     if(step!==1) return;
-    document.getElementById('at2-valve').querySelector('rect').setAttribute('fill','#2e7d32');
-    document.getElementById('at2-valve').querySelector('rect').setAttribute('stroke','#1b5e20');
+    document.getElementById('at2-pulse').style.display='none';
+    document.getElementById('at2-valve-hint').style.display='none';
+    document.getElementById('at2-vbody').setAttribute('fill','#2e7d32');
+    document.getElementById('at2-vbody').setAttribute('stroke','#1b5e20');
     document.getElementById('at2-vstate').textContent='● CLOSED';
     document.getElementById('at2-vstate').setAttribute('fill','#a5d6a7');
     step=2; stepStyle(2);
@@ -207,6 +224,16 @@ A properly sealed digester retains all gas for cooking and productive use.
     document.getElementById('at2-brush-icon').setAttribute('y',p.y+5);
     var d=Math.sqrt(Math.pow(p.x-LX,2)+Math.pow(p.y-LY,2));
     document.getElementById('at2-bubbles').setAttribute('opacity',d<LR?'1':'0');
+    var dx=p.x-_ltx, dy=p.y-_lty;
+    if(dx*dx+dy*dy>64){
+      var tr=document.getElementById('at2-trail');
+      var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('cx',p.x); c.setAttribute('cy',p.y); c.setAttribute('r','11');
+      c.setAttribute('fill','rgba(224,247,250,0.45)');
+      tr.appendChild(c);
+      if(tr.childNodes.length>120) tr.removeChild(tr.firstChild);
+      _ltx=p.x; _lty=p.y;
+    }
   }
 
   window.at2Move=function(e){ if(soapOn&&step===3) moveBrush(svgPt(e)); };
@@ -239,8 +266,8 @@ A properly sealed digester retains all gas for cooking and productive use.
 
   window.at2Reset=function(){
     step=1; soapOn=false; svg.style.cursor='crosshair'; stepStyle(1);
-    document.getElementById('at2-valve').querySelector('rect').setAttribute('fill','#f44336');
-    document.getElementById('at2-valve').querySelector('rect').setAttribute('stroke','#b71c1c');
+    document.getElementById('at2-vbody').setAttribute('fill','#f44336');
+    document.getElementById('at2-vbody').setAttribute('stroke','#b71c1c');
     document.getElementById('at2-vstate').textContent='● OPEN';
     document.getElementById('at2-vstate').setAttribute('fill','#ff8a80');
     ['at2-brush','at2-brush-icon','at2-bubbles','at2-crack'].forEach(function(id){
@@ -248,6 +275,11 @@ A properly sealed digester retains all gas for cooking and productive use.
     });
     document.getElementById('at2-soap-wrap').style.display='none';
     document.getElementById('at2-reset-wrap').style.display='none';
+    var tr=document.getElementById('at2-trail');
+    while(tr.firstChild) tr.removeChild(tr.firstChild);
+    _ltx=-999; _lty=-999;
+    document.getElementById('at2-pulse').style.display='';
+    document.getElementById('at2-valve-hint').style.display='';
     status('Step 1 — Click the <strong>red VALVE</strong> to close it before inflating the bag.','#e0f7fa','#80cbc4','#006064');
   };
 })();

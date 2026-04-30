@@ -42,8 +42,14 @@ repository:
 
 # Sphinx extensions
 sphinx:
+  extra_extensions:
+    - sphinxext.opengraph
   config:
     html_show_sourcelink: false
+    ogp_site_url: "https://learn.creativenergie.co.uk/"
+    ogp_site_name: "Biogas Training Course — CREATIVenergie"
+    ogp_description_length: 200
+    ogp_image: "https://learn.creativenergie.co.uk/_images/image1.jpg"
     html_js_files:
       - progress.js
       - quiz.js
