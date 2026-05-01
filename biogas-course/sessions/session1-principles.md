@@ -27,7 +27,7 @@ By the end of this session, you should be able to:
 
 Biogas is produced when micro-organisms break down organic matter in an **anaerobic** (oxygen-free) environment. This is the same natural process that occurs inside a cow's stomach, where microbes digest food and release methane gas.
 
-There are four key principles you must understand to run a successful biogas digester.
+There are 4 key principles you must understand to run a successful biogas digester.
 
 ---
 
